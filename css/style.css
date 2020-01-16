@@ -28,6 +28,16 @@ html, body {
     background-origin: border-box;
     background-position: center;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px;
+}
+
+.banner i {
+    font-size: 4em;
+    color: #fff;
 }
 
 .flex-content {
@@ -42,4 +52,8 @@ html, body {
     width: 300px;
     min-height: 230px;
     margin: 20px;
+}
+
+.bold {
+    font-weight: bold;
 }
