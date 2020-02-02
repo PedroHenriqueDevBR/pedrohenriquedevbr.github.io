@@ -1,0 +1,69 @@
+@import url('../fonts/PressStart2P-Regular.ttf');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+html, body, #game {
+    width: 100%;
+    height: 100%;
+    background: url('../img/floor.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+table td {
+    padding: 0px 5px;
+}
+
+#nobody {
+    width: 100%;
+    height: 90%;
+}
+
+#spaun, #base {
+    width: 100%;
+    height: 5%;
+    background: #00000066;
+}
+
+#bullet {
+    width: 2%;
+    height: 4%;
+    background: linear-gradient(to right, #ECEFF1, #607D8B);
+    border-radius: 1px 1px 60% 60%;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+}
+
+#player {
+    width: 10%;
+    height: 50%;
+    background: url('../img/player.jpg');
+    background-position: center;
+    position: relative;
+    top: 0;
+    left: 50%;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#scrore {
+    position: fixed;
+    top: 6%;
+    right: 1%;
+    background: #00000066;
+    padding: 5px;
+    border-radius: 5px;
+    color: bisque;
+}
