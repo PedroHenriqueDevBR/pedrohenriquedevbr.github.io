@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pedro Henrique - Portifólio</title>
+    <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/test.css">
 </head>
@@ -15,6 +16,12 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="main-menu">
         <!-- Logo -->
         <span href="#" class="navbar-brand">Pedro</span>
+
+                <!-- Botão ativa menu -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
         <div class="collapse navbar-collapse" id="nav-menu">
             <ul class="navbar-nav">
@@ -29,12 +36,6 @@
                 </li>
             </ul>
         </div>
-
-        <!-- Botão ativa menu -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu"
-            aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </nav>
 
     <section class="presentation">
@@ -49,8 +50,53 @@
                 <div id="about" class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
                     <h2>Seja bem vindo ao meu portifólio</h2>
                     <h1 class="text-monospace api-name">PEDRO HENRIQUE</h1>
-                    <h3 class="font-weight-bold">Estudante no Instituto Federal do Piauí</h3>
+                    <h3 class="font-weight-bold">Estudante (Instituto Federal do Piauí)</h3>
                     <p class="api-description"></p>
+
+                    <!-- Main infos -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <p>
+                                <i class="far fa-calendar-alt icon"></i>
+                                18 de Junho de 1998
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>
+                                <i class="fas fa-phone-alt icon"></i>
+                                (86) 98863-9775
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>
+                                <i class="fas fa-envelope icon"></i>
+                                pedro.henrique.particular@gmail.com
+                            </p>
+                        </li>
+                        <li class="list-group-item">
+                            <p>
+                                <i class="fas fa-map-marker-alt icon"></i>
+                                Teresina Piauí - Brasil
+                            </p>
+                        </li>
+                    </ul>
+
+                    <!-- Social infos -->
+                    <ul class="list-group list-group-flush list-group-horizontal social-icons">
+                        <li class="list-group-item">
+                            <i class="fab fa-github icon"></i>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fab fa-linkedin icon"></i>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fab fa-facebook icon"></i>
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fab fa-instagram icon"></i>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
@@ -82,6 +128,7 @@
 
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/all.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/test.js"></script>
 
