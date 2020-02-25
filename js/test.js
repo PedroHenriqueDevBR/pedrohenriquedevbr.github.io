@@ -1,6 +1,11 @@
 var data = {};
-var endpoint = 'https://api.github.com/users/pedrohenriquedevbr';
 var localendpoint = '../response.json';
+var endpoints = {
+    'perfil': 'https://api.github.com/users/pedrohenriquedevbr',
+    'repos': 'https://api.github.com/users/pedrohenriquedevbr/repos',
+    'readme': 'https://api.github.com/repos/PedroHenriqueDevBR/App-Pocket-Coin/readme',
+    'raw': 'https://raw.githubusercontent.com/PedroHenriqueDevBR/App-Pocket-Coin/master/README.md'
+};
 
 
 function saveData(json) {
@@ -18,7 +23,7 @@ function getData() {
         }
     }
 
-    xhttp.open('GET', endpoint);
+    xhttp.open('GET', endpoints['perfil']);
     xhttp.send();
 }
 
