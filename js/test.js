@@ -82,7 +82,7 @@ function showData() {
         // List last projects
         showProjects();
 
-    }, 1);
+    }, 1000);
 }
 
 function showProjects() {
