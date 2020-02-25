@@ -19,6 +19,14 @@ var languageColor = {
     'HTML': '#FF5722',
     'JavaScript': '#FFCA28'
 }
+var languageImg = {
+    'Python': 'python.jpg',
+    'Java': 'java.jpg',
+    'TypeScript': 'typescript.jpg',
+    'Dart': 'dart.png',
+    'HTML': 'html.png',
+    'JavaScript': 'js.png'
+}
 
 
 function startLoad() {
@@ -108,7 +116,7 @@ function showProjects() {
         else {
             showProjects += `${getCardElement(repository)}`;
         }
-        if (contProjects === 5) {
+        if (contProjects === 50) {
             break;
         } else {
             contProjects++;
@@ -121,7 +129,7 @@ function showProjects() {
 function getCardElement(repository) {
     return `
             <div class="card" style="width: 18rem;">
-                <img src="img/bg01.jpg" class="card-img-top">
+                <img src="img/${languageImg[repository.language]}" height="200px" class="card-img-top">
                 <div class="card-body">
                     <p>
                         <span class="badge badge-primary px-3 py-2" style="background: ${languageColor[repository.language]};">${repository.language}</span>
