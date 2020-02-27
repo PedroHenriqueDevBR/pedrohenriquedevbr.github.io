@@ -2,9 +2,7 @@ var localendpoint = "../response.json";
 var endpoints = {
   perfil: "https://api.github.com/users/pedrohenriquedevbr",
   repos: "https://api.github.com/users/pedrohenriquedevbr/repos",
-  readme: "https://api.github.com/repos/PedroHenriqueDevBR/##/readme",
-  raw:
-    "https://raw.githubusercontent.com/PedroHenriqueDevBR/##/master/README.md"
+  raw: "https://raw.githubusercontent.com/PedroHenriqueDevBR/##/master/README.md"
 };
 var languageColor = {
   Python: "#8BC34A",
@@ -30,22 +28,19 @@ var bgdGradients = [
   `background: #D66D75; background: -webkit-linear-gradient(to top, #E29587, #D66D75); background: linear-gradient(to top, #E29587, #D66D75);`,
   `background: #6a3093; background: -webkit-linear-gradient(to top, #a044ff, #6a3093); background: linear-gradient(to top, #a044ff, #6a3093);`
 ];
-var data = {
+var data = { // dados do peril
   response: {}
 };
-var repositorys = {
+var repositorys = { // todos os repositórios
   response: {}
 };
-
+var readme = [];
 var cards;
-var contentModal = "";
 
 function startLoad() {
   getData();
   getRespositoryes();
-  document.getElementById("presentation").style += `${
-    bgdGradients[getBgdPosition(0, 6)]
-  }`;
+  document.getElementById("presentation").style += `${bgdGradients[getBgdPosition(0, 6)]}`;
 }
 
 function getBgdPosition(min, max) {
@@ -55,33 +50,29 @@ function getBgdPosition(min, max) {
 }
 
 function getData() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", endpoints["perfil"], true);
-  xhttp.onreadystatechange = () => {
-    if (xhttp.status == 200) {
-      saveData(xhttp.responseText);
-    }
-  };
-  xhttp.send();
+  axios.get(endpoints["perfil"])
+    .then(function (response) {
+      saveData(response.data);
+      console.log();
+      console.log(response.status);
+    });
 }
 
 function getRespositoryes() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", localendpoint, true);
-  xhttp.onreadystatechange = () => {
-    if (xhttp.status == 200) {
-      saveRespositoryes(xhttp.responseText);
-    }
-  };
-  xhttp.send();
+  axios.get(localendpoint)
+    .then(function (response) {
+      saveRespositoryes(response.data);
+      console.log();
+      console.log(response.status);
+    });
 }
 
 function saveData(json) {
-  data["response"] = JSON.parse(json);
+  data["response"] = json;
 }
 
 function saveRespositoryes(json) {
-  repositorys["response"] = JSON.parse(json);
+  repositorys["response"] = json;
 }
 
 function showData() {
@@ -107,7 +98,10 @@ function showData() {
 
     // List last projects
     showProjects();
-  }, 100);
+
+    // get readme
+
+  }, 300);
 }
 
 function showProjects() {
@@ -118,8 +112,8 @@ function showProjects() {
   for (var repository of repositorys["response"]) {
     if (contProjects === 0) {
       showProjects += `
-                    <!-- Card deck -->
-                    <div class="card-deck mt-3">
+                      <!-- Card deck -->
+                      <div class="card-deck mt-3">
                     `;
     }
     if (contProjects % 3 === 0) {
@@ -127,7 +121,7 @@ function showProjects() {
                     </div>
                     <!-- Card deck -->
                     <div class="card-deck mt-3">
-                        ${getCardElement(repository, contProjects)}
+                    ${getCardElement(repository, contProjects)}
                 `;
     } else {
       showProjects += `${getCardElement(repository, contProjects)}`;
@@ -146,13 +140,13 @@ function getCardElement(repository, position) {
   return `
         <div class="card card-show" style="width: 18rem;" onClick="showModal(${position})">
             <img src="img/${
-              languageImg[repository.language]
-            }" height="200px" class="card-img-top">
+    languageImg[repository.language]
+    }" height="200px" class="card-img-top">
             <div class="card-body">
                 <p>
                     <span class="badge badge-primary px-3 py-2" style="background: ${
-                      languageColor[repository.language]
-                    };">${repository.language}</span>
+    languageColor[repository.language]
+    };">${repository.language}</span>
                 </p>
                 <h3>
                     ${repository.name}
@@ -183,16 +177,15 @@ function showMenu() {
 }
 
 function getReadme(uri) {
-  const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", uri, true);
-  xhttp.onreadystatechange = () => {
-    if (xhttp.status == 200) {
-      setTimeout(() => {
-        contentModal = xhttp.responseText;
-      }, 200);
-    }
-  };
-  xhttp.send();
+  axios.get(uri)
+    .then(function (response) {
+      var content = response.data;
+      var converter = new showdown.Converter();
+      var html = converter.makeHtml(content);
+
+      document.getElementById("modal-content").innerHTML = html;
+      $(".descrition-modal").modal("show");
+    });
 }
 
 function showModal(position) {
@@ -200,12 +193,8 @@ function showModal(position) {
     "##",
     repositorys["response"][position].name
   );
-  getReadme(endpoint);
 
-  setTimeout(() => {
-    document.getElementById("modal-content").innerHTML = contentModal;
-    $(".descrition-modal").modal("show");
-  }, 200);
+  getReadme(endpoint);
 }
 
 addEventListener("load", startLoad);

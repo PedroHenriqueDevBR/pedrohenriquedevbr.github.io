@@ -212,10 +212,18 @@
     </div>
 
   </footer>
-  
+
   <div class="modal fade descrition-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content py-5 px-5" id="modal-content"></div>
+      <div class="modal-content py-2 px-4">
+        <div class="modal-header">
+          <h5 class="modal-title">Descrição</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-content"></div>
+      </div>
     </div>
   </div>
 
@@ -223,6 +231,7 @@
   <script src="js/all.min.js"></script> <!-- Importação dos ícones -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/showdown.min.js"></script>
+  <script src="js/axios.min.js"></script>
   <script src="js/script.js"></script>
 
 </body>

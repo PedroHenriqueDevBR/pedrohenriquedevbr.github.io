@@ -110,6 +110,18 @@
   padding: 15px;
 }
 
+#modal-content h1 {
+  font-size: 1.5em;
+}
+
+#modal-content {
+  font-size: 0.8em;
+}
+
+#modal-content * {
+  max-width: 100%;
+}
+
 #person-description p {
   font-size: 1.2em;
 }
