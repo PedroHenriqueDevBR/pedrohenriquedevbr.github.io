@@ -1,120 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
-    <title>Pedro Henrique</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link type="text/css" rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-        media="screen,projection" />
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Pedro Henrique - Portifólio</title>
+  <link rel="stylesheet" href="css/fontawesome.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-    <div class="navbar-fixed">
-        <nav class="black-text z-depth-0 white menu">
-            <div class="nav-wrapper">
-                <button class="btn btn-trigger sidenav-trigger text-menu-color" data-target="slide-out">
-                    <i class="material-icons">menu</i>
-                </button>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="main-menu">
+    <!-- Logo -->
+    <span href="#" class="navbar-brand">Pedro</span>
 
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li>
-                        <a href="https://www.facebook.com/profile.php?id=100004368814502" target="_blank"
-                            class="text-menu-color">
-                            <i class="fab fa-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/pedro-henrique-br/" target="_blank"
-                            class="text-menu-color">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/pedrohenriquedevbr" target="_blank" class="text-menu-color">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    <!-- Botão ativa menu -->
+    <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#nav-menu"
+      aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <ul id="slide-out" class="sidenav">
-        <li>
-            <div class="user-view">
-                <div class="background">
-                    <img src="img/bg01.jpg">
-                </div>
-                <a><img class="circle" src="img/pedro.jpg"></a>
-                <a><span class="white-text name">Pedro Henrique</span></a>
-                <a><span class="white-text email">pedro.henrique.particular@gmail.com</span></a>
-            </div>
+    <div class="collapse navbar-collapse justify-content-end" id="nav-menu">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link text-white">Topo</a>
         </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-white">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-white">Projetos</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-        <li><a href="index.html"><i class="material-icons">home</i>Apresentação geral</a></li>
-        <li><a href="curriculo.html"><i class="material-icons">person</i>Currículo</a></li>
-        <li><a href="projects.html"><i class="material-icons">laptop</i>Projetos</a></li>
-    </ul>
+  <div class="container-presentation">
+    <section class="presentation" id="presentation">
+      <div class="card-presentation shadow bg-white">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+              <img class="api-photo" src="" alt="Pedro Henrique" width="100%" />
+            </div>
 
-    <div class="description container">
-        <h4 class="center-align">Pedro Henrique</h4>
+            <div id="about" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+              <h2>Seja bem vindo ao meu portifólio</h2>
+              <h1 class="text-monospace api-name">PEDRO HENRIQUE</h1>
+              <h3 class="font-weight-bold">
+                Estudante (Instituto Federal do Piauí)
+              </h3>
+              <p class="api-description"></p>
+
+              <!-- Main infos -->
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <p>
+                    <i class="far fa-calendar-alt icon"></i>
+                    18 de Junho de 1998
+                  </p>
+                </li>
+                <li class="list-group-item">
+                  <p>
+                    <i class="fas fa-phone-alt icon"></i>
+                    (86) 98863-9775
+                  </p>
+                </li>
+                <li class="list-group-item">
+                  <p>
+                    <i class="fas fa-envelope icon"></i>
+                    pedro.henrique.particular@gmail.com
+                  </p>
+                </li>
+                <li class="list-group-item">
+                  <p>
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    Teresina Piauí - Brasil
+                  </p>
+                </li>
+              </ul>
+
+              <!-- Social infos -->
+              <ul class="list-group list-group-horizontal social-icons">
+                <li>
+                  <a href="#"><i class="fab fa-github icon text-dark"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-linkedin icon text-dark"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-facebook icon text-dark"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-instagram icon text-dark"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-youtube icon text-dark"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <main class="mt-5">
+    <div class="container">
+      <section id="person-description">
+        <h1 class="mb-5">SOBRE MIM</h1>
         <p>
-            Meu nome é Pedro Henrique, sou aluno curso tecnólogo em análise e desenvolvimento de sistemas, ministrado no
-            IFPI campus central. Sou estudante e apaixonado pela área de tecnologia, comecei a estudar programação ainda
-            na adolescência, inicialmente assistindo vídeos no YouTube e posteriormente tive a oportunidade de ingressar
-            no ensino superior por meio do SISU (Sistema de Seleção Unificada) no curso tecnólogo em análise e
-            desenvolvimento de sistema, curso que eu estou cursando no momento.
+          Olá, meu nome é Pedro Henrique de Lima Ribeiro, sou aluno do curso
+          de análise e desenvolvimento de sistemas no Instituto Federal do
+          Piauí (IFPI), curso de me mostrou o caminho a seguir para me tornar
+          não apenas um bom desenvolvedor mas também um bom solucionador de
+          problemas, acredito que essa seja a principal característica de um
+          bom programador, que é pegar um problema e apresentar uma solução em
+          forma de sistema.
         </p>
-
         <p>
-            Por meio do curso tive a oportunidade de conhecer e entender como funciona o desenvolvimento de softwares,
-            conheci as diferentes propostas de linguagens de programação e tecnologias para a solução de problemas. Meu
-            foco maior está no desenvolvimento de aplicações para dispositivos mobile e de sistemas web.
+          Minhas áreas de interesse principais, são elas, desenvolvimento web
+          (back-end) com Python e desenvolvimento mobile (Android) com Java,
+          porém tenho outras skils nao tão aprofundada em outras tecnologias.
+          entre as áreas de interesse que eu também me matenho estudando são,
+          desenvolvimento web (front-end), Inteligencia Artificial,
+          desenvolvimento de games com Godot Engine.
         </p>
-
-        <p>
-            Abaixo deixo dois cards onde você poderá acessar minhas informações pessoais e de projetos desenvolvidos por
-            mim.
-        </p>
+      </section>
     </div>
 
-    <div class="flex-content container">
+    <!-- Listagem de projetos -->
+    <div class="bg-light mt-5 pt-2">
 
-        <a href="curriculo.html">
-            <div class="card blue lighten-1">
-                <div class="card-content white-text">
-                    <span class="card-title">Currículo</span>
-                    <p>
-                        Apresentação do currículo, dados pessoais (contato, email), habilidades,
-                        competências e experiências.
-                    </p>
-                </div>
-            </div>
-        </a>
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <h1 class="mb-4">Meus projetos</h1>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-success btn-show-projects">Ver todos</button>
+          </div>
+        </div>
 
-        <a href="projects.html">
-            <div class="card blue lighten-1">
-                <div class="card-content white-text">
-                    <span class="card-title">Projetos</span>
-                    <p>
-                        Apresentação de projetos (web, android) desenvolvidos, participações em eventos e
-                        certificados.
-                    </p>
-                </div>
+        <div id="projects-cards">
+          <!-- Card deck -->
+          <!-- <div class="card-deck mt-3">
+            <div class="card" style="width: 18rem;">
+              <img src="img/bg01.jpg" class="card-img-top" height="300px">
+              <div class="card-body">
+                <h3>Titulo do projeto</h3>
+                <p>
+                  <span class="badge badge-primary px-4 py-3" style="background: #8BC34A;">Python</span>
+                </p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's
+                  content.
+                </p>
+              </div>
             </div>
-        </a>
+          </div> -->
+
+        </div>
+        <div class="d-flex align-items-center py-3 container-btn-show-projects-aux">
+          <button class="btn btn-success btn-show-projects-aux">Ver todos</button>
+        </div>
+      </div>
 
     </div>
+  </main>
 
+  <footer id="footer" class="bg-dark py-5">
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/script.js"></script>
+    <div class="logo">
+      <img src="img/pedro.jpg" alt="logo" width="50px">
+      <span class="text-white">Pedro Henrique</sp>
+    </div>
+
+    <div class="site-map">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Projetos</a></li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Sobre</a></li>
+      </ul>
+    </div>
+
+    <div class="social-map">
+      <div class="icon-social-map">
+        <i class="fab fa-github icon"></i>
+      </div>
+      <div class="icon-social-map">
+        <i class="fab fa-linkedin icon"></i>
+      </div>
+      <div class="icon-social-map">
+        <i class="fab fa-facebook icon"></i>
+      </div>
+      <div class="icon-social-map">
+        <i class="fab fa-youtube icon"></i>
+      </div>
+      <div class="icon-social-map">
+        <i class="fab fa-instagram icon"></i>
+      </div>
+    </div>
+
+    <div class="copr text-secondary mt-4">
+      <p>Portifólio desenvolvido por Pedro Henrique</p>
+    </div>
+
+  </footer>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/all.min.js"></script> <!-- Importação dos ícones -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
-</htmlu
+
+</html>

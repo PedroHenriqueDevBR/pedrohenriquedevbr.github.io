@@ -1,59 +1,220 @@
-html, body {
-    width: 100%;
-    height: 100%;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.text-menu-color {
-    color: #263238;
+.navbar {
+  background: #00000000 !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  transition: 500ms ease-in-out;
 }
 
-.btn-trigger {
-    background: transparent;
-    box-shadow: none;
-}
-.btn-trigger:hover {
-    background: transparent;
-    box-shadow: none;
+#nav-menu li {
+  padding: 0 10px;
 }
 
-.menu {
-    border-bottom: 1px solid #B0BEC5;
+#nav-menu a {
+  text-transform: uppercase;
+  font-size: 0.9em;
 }
 
-.banner {
-    width: 100%;
-    height: 91%;
-    background: url('../img/bg01.jpg');
-    background-attachment: fixed;
-    background-origin: border-box;
-    background-position: center;
-    background-size: cover;
+.show-menu {
+  background: #000000 !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.container-presentation {
+  margin-bottom: 160px;
+}
+
+.presentation {
+  /* background: #6a3093;
+  background: -webkit-linear-gradient(to top, #a044ff, #6a3093);
+  background: linear-gradient(to top, #a044ff, #6a3093); */
+  width: 100%;
+  padding: 70px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  transition: 300ms ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px #90A4AE;
+}
+
+.card-presentation {
+  position: relative;
+  top: 100px;
+  width: 80%;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.card-presentation img {
+  border-radius: 15px;
+}
+
+#about {
+  padding: 60px;
+}
+
+#about h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+#about h2, h3 {
+  font-size: 1.2em;
+  color: #455a64;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#about p {
+  color: #455a64;
+}
+
+.icon {
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+
+.container-btn-show-projects-aux {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-show-projects-aux {
+  display: none;
+}
+
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.4em;
+  list-style: none;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.social-icons li {
+  padding: 15px;
+}
+
+#person-description p {
+  font-size: 1.2em;
+}
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #021017 !important;
+}
+
+#footer .logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer .logo img {
+  border-radius: 50%;
+  margin: 15px;
+}
+
+#footer .logo span {
+  font-size: 2em;
+}
+
+#footer .site-map ul, #footer .social-map {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+#footer .site-map ul li {
+  padding: 20px;
+  text-decoration: none;
+}
+
+#footer .site-map ul li a {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 400;
+  text-decoration: none;
+  color: #fff;
+}
+
+#footer .social-map .icon-social-map {
+  width: 45px;
+  height: 45px;
+  border-radius: 20%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 7px;
+  color: #021017;
+  font-weight: bold;
+  font-size: 1.4em;
+  padding-left: 5px;
+  transition: 250ms;
+}
+
+#footer .social-map .icon-social-map:hover {
+  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .card-presentation {
+    padding: 2px;
+  }
+  #about {
+    padding: 15px;
+  }
+  #about h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  #about h2, h3 {
+    font-size: 0.8em;
+    color: #455a64;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #about p {
+    font-size: 0.9 em;
+  }
+  .social-icons, .icon {
+    font-size: 0.9em;
+  }
+  #projects-cards {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
-    padding: 15px;
-}
-
-.banner i {
-    font-size: 4em;
-    color: #fff;
-}
-
-.flex-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.flex-content .card {
-    width: 300px;
-    min-height: 230px;
-    margin: 20px;
-}
-
-.bold {
-    font-weight: bold;
+  }
+  .btn-show-projects {
+    display: none;
+  }
+  .btn-show-projects-aux {
+    display: block;
+  }
 }
