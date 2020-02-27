@@ -5,12 +5,6 @@ var endpoints = {
     'readme': 'https://api.github.com/repos/PedroHenriqueDevBR/App-Pocket-Coin/readme',
     'raw': 'https://raw.githubusercontent.com/PedroHenriqueDevBR/App-Pocket-Coin/master/README.md'
 };
-var data = {
-    "response": {}
-};
-var repositorys = {
-    "response": {}
-};
 var languageColor = {
     'Python': '#8BC34A',
     'Java': '#D32F2F',
@@ -18,7 +12,7 @@ var languageColor = {
     'Dart': '#2196F3',
     'HTML': '#FF5722',
     'JavaScript': '#FFCA28'
-}
+};
 var languageImg = {
     'Python': 'python.jpg',
     'Java': 'java.jpg',
@@ -26,7 +20,7 @@ var languageImg = {
     'Dart': 'dart.png',
     'HTML': 'html.png',
     'JavaScript': 'js.png'
-}
+};
 var bgdGradients = [
     `background: rgb(2,0,36); background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);`,
     `background: #56CCF2; background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2); background: linear-gradient(to right, #2F80ED, #56CCF2);`,
@@ -34,7 +28,13 @@ var bgdGradients = [
     `background: #E44D26; background: -webkit-linear-gradient(to top, #F16529, #E44D26); background: linear-gradient(to top, #F16529, #E44D26);`,
     `background: #D66D75; background: -webkit-linear-gradient(to top, #E29587, #D66D75); background: linear-gradient(to top, #E29587, #D66D75);`,
     `background: #6a3093; background: -webkit-linear-gradient(to top, #a044ff, #6a3093); background: linear-gradient(to top, #a044ff, #6a3093);`
-]
+];
+var data = {
+    "response": {}
+};
+var repositorys = {
+    "response": {}
+};
 
 
 function startLoad() {
