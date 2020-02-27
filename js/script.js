@@ -2,10 +2,9 @@ var localendpoint = "../response.json";
 var endpoints = {
   perfil: "https://api.github.com/users/pedrohenriquedevbr",
   repos: "https://api.github.com/users/pedrohenriquedevbr/repos",
-  readme:
-    "https://api.github.com/repos/PedroHenriqueDevBR/App-Pocket-Coin/readme",
+  readme: "https://api.github.com/repos/PedroHenriqueDevBR/##/readme",
   raw:
-    "https://raw.githubusercontent.com/PedroHenriqueDevBR/App-Pocket-Coin/master/README.md"
+    "https://raw.githubusercontent.com/PedroHenriqueDevBR/##/master/README.md"
 };
 var languageColor = {
   Python: "#8BC34A",
@@ -56,7 +55,7 @@ function getBgdPosition(min, max) {
 }
 
 function getData() {
-  const xhttp = new XMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
   xhttp.open("GET", endpoints["perfil"], true);
   xhttp.onreadystatechange = () => {
     if (xhttp.status == 200) {
@@ -67,7 +66,7 @@ function getData() {
 }
 
 function getRespositoryes() {
-  const xhttp = new XMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
   xhttp.open("GET", localendpoint, true);
   xhttp.onreadystatechange = () => {
     if (xhttp.status == 200) {
@@ -183,10 +182,30 @@ function showMenu() {
   };
 }
 
+function getReadme(uri) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("GET", uri, true);
+  xhttp.onreadystatechange = () => {
+    if (xhttp.status == 200) {
+      setTimeout(() => {
+        contentModal = xhttp.responseText;
+      }, 200);
+    }
+  };
+  xhttp.send();
+}
+
 function showModal(position) {
-  document.getElementById("modal-content").innerHTML =
-    repositorys["response"][position].description;
-  $(".descrition-modal").modal("show");
+  var endpoint = endpoints["raw"].replace(
+    "##",
+    repositorys["response"][position].name
+  );
+  getReadme(endpoint);
+
+  setTimeout(() => {
+    document.getElementById("modal-content").innerHTML = contentModal;
+    $(".descrition-modal").modal("show");
+  }, 200);
 }
 
 addEventListener("load", startLoad);
