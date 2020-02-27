@@ -27,11 +27,27 @@ var languageImg = {
     'HTML': 'html.png',
     'JavaScript': 'js.png'
 }
+var bgdGradients = [
+    `background: rgb(2,0,36); background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);`,
+    `background: #56CCF2; background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2); background: linear-gradient(to right, #2F80ED, #56CCF2);`,
+    `background: #F2994A; background: -webkit-linear-gradient(to left, #F2C94C, #F2994A); background: linear-gradient(to left, #F2C94C, #F2994A);`,
+    `background: #E44D26; background: -webkit-linear-gradient(to top, #F16529, #E44D26); background: linear-gradient(to top, #F16529, #E44D26);`,
+    `background: #D66D75; background: -webkit-linear-gradient(to top, #E29587, #D66D75); background: linear-gradient(to top, #E29587, #D66D75);`,
+    `background: #6a3093; background: -webkit-linear-gradient(to top, #a044ff, #6a3093); background: linear-gradient(to top, #a044ff, #6a3093);`
+]
 
 
 function startLoad() {
     getData();
-    getRespositoryes(localendpoint);
+    getRespositoryes();
+    document.getElementById('presentation').style += `${bgdGradients[getBgdPosition(0, 6)]}`;
+    console.log(bgdGradients[getBgdPosition(0, 6)]);
+}
+
+function getBgdPosition(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function saveData(json) {
@@ -53,9 +69,9 @@ function saveRespositoryes(json) {
     repositorys['response'] = JSON.parse(json);
 }
 
-function getRespositoryes(uri) {
+function getRespositoryes() {
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', uri, true);
+    xhttp.open('GET', localendpoint, true);
     xhttp.onreadystatechange = () => {
         if (xhttp.status == 200) {
             saveRespositoryes(xhttp.responseText);
@@ -116,7 +132,7 @@ function showProjects() {
         else {
             showProjects += `${getCardElement(repository)}`;
         }
-        if (contProjects === 50) {
+        if (contProjects === 5) {
             break;
         } else {
             contProjects++;
@@ -128,22 +144,42 @@ function showProjects() {
 
 function getCardElement(repository) {
     return `
-            <div class="card" style="width: 18rem;">
-                <img src="img/${languageImg[repository.language]}" height="200px" class="card-img-top">
-                <div class="card-body">
-                    <p>
-                        <span class="badge badge-primary px-3 py-2" style="background: ${languageColor[repository.language]};">${repository.language}</span>
-                    </p>
-                    <h3>
-                        ${repository.name}
-                    </h3>
-                    <p class="card-text">
-                        ${repository.description}
-                    </p>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <img src="img/${languageImg[repository.language]}" height="200px" class="card-img-top">
+            <div class="card-body">
+                <p>
+                    <span class="badge badge-primary px-3 py-2" style="background: ${languageColor[repository.language]};">${repository.language}</span>
+                </p>
+                <h3>
+                    ${repository.name}
+                </h3>
+                <p class="card-text">
+                    ${repository.description}
+                </p>
             </div>
+        </div>
     `;
 }
 
+
+function showMenu() {
+    var menu = document.getElementById('main-menu');
+
+    if (scrollY === 0) {
+        menu.classList.remove('show-menu');
+    } else {
+        menu.classList.add('show-menu');
+    }
+    onscroll = () => {
+        if (scrollY === 0) {
+            menu.classList.remove('show-menu');
+        } else {
+            menu.classList.add('show-menu');
+        }
+    }
+}
+
+
 addEventListener('load', startLoad);
-addEventListener('load', showData)
+addEventListener('load', showData);
+addEventListener('load', showMenu);

@@ -3,38 +3,55 @@
   margin: 0;
 }
 
-#main-menu {
-  /* display: none; */
-}
-
 .navbar {
-  background: #000000 !important;
+  background: #00000000 !important;
   padding-top: 30px;
   padding-bottom: 30px;
   transition: 500ms ease-in-out;
 }
 
-.show {
+#nav-menu li {
+  padding: 0 10px;
+}
+
+#nav-menu a {
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.show-menu {
   background: #000000 !important;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
-.sub-menu {
-  background: linear-gradient(to right, #000, #000);
+.container-presentation {
+  margin-bottom: 160px;
 }
 
 .presentation {
-  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+  /* background: #6a3093;
+  background: -webkit-linear-gradient(to top, #a044ff, #6a3093);
+  background: linear-gradient(to top, #a044ff, #6a3093); */
   width: 100%;
-  padding: 150px 0;
+  padding: 70px 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.card {
+  transition: 300ms ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px #90A4AE;
+}
+
 .card-presentation {
+  position: relative;
+  top: 100px;
   width: 80%;
   padding: 20px;
   border-radius: 15px;
@@ -68,12 +85,29 @@
   margin-right: 5px;
 }
 
+.container-btn-show-projects-aux {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-show-projects-aux {
+  display: none;
+}
+
 .social-icons {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border-bottom: 1px solid #cfd8dc;
   font-size: 1.4em;
+  list-style: none;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.social-icons li {
+  padding: 15px;
 }
 
 #person-description p {
@@ -170,5 +204,17 @@
   }
   .social-icons, .icon {
     font-size: 0.9em;
+  }
+  #projects-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .btn-show-projects {
+    display: none;
+  }
+  .btn-show-projects-aux {
+    display: block;
   }
 }

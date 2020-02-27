@@ -17,33 +17,33 @@
     <span href="#" class="navbar-brand">Pedro</span>
 
     <!-- Botão ativa menu -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu"
-      aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#nav-menu"
+      aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="nav-menu">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link">Topo</a>
+          <a href="#" class="nav-link text-white">Topo</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Sobre</a>
+          <a href="#" class="nav-link text-white">Sobre</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Projetos</a>
+          <a href="#" class="nav-link text-white">Projetos</a>
         </li>
       </ul>
     </div>
   </nav>
 
-  <div>
-    <section class="presentation">
+  <div class="container-presentation">
+    <section class="presentation" id="presentation">
       <div class="card-presentation shadow bg-white">
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-              <img class="api-photo" src="img/pedro.jpg" alt="Pedro Henrique" width="100%" />
+              <img class="api-photo" src="" alt="Pedro Henrique" width="100%" />
             </div>
 
             <div id="about" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -83,21 +83,21 @@
               </ul>
 
               <!-- Social infos -->
-              <ul class="list-group  list-group-horizontal social-icons">
-                <li class="list-group-item">
-                  <i class="fab fa-github icon"></i>
+              <ul class="list-group list-group-horizontal social-icons">
+                <li>
+                  <a href="#"><i class="fab fa-github icon text-dark"></i></a>
                 </li>
-                <li class="list-group-item">
-                  <i class="fab fa-linkedin icon"></i>
+                <li>
+                  <a href="#"><i class="fab fa-linkedin icon text-dark"></i></a>
                 </li>
-                <li class="list-group-item">
-                  <i class="fab fa-facebook icon"></i>
+                <li>
+                  <a href="#"><i class="fab fa-facebook icon text-dark"></i></a>
                 </li>
-                <li class="list-group-item">
-                  <i class="fab fa-instagram icon"></i>
+                <li>
+                  <a href="#"><i class="fab fa-instagram icon text-dark"></i></a>
                 </li>
-                <li class="list-group-item">
-                  <i class="fab fa-youtube icon"></i>
+                <li>
+                  <a href="#"><i class="fab fa-youtube icon text-dark"></i></a>
                 </li>
               </ul>
             </div>
@@ -132,14 +132,19 @@
     </div>
 
     <!-- Listagem de projetos -->
-    <div class="bg-light mt-5 pt-4">
+    <div class="bg-light mt-5 pt-2">
 
       <div class="container">
-        <h1 class="mb-4">Meus projetos (Github)</h1>
+        <div class="d-flex justify-content-between">
+          <h1 class="mb-4">Meus projetos</h1>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-success btn-show-projects">Ver todos</button>
+          </div>
+        </div>
 
         <div id="projects-cards">
           <!-- Card deck -->
-          <div class="card-deck mt-3">
+          <!-- <div class="card-deck mt-3">
             <div class="card" style="width: 18rem;">
               <img src="img/bg01.jpg" class="card-img-top" height="300px">
               <div class="card-body">
@@ -153,16 +158,18 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
-
+        <div class="d-flex align-items-center py-3 container-btn-show-projects-aux">
+          <button class="btn btn-success btn-show-projects-aux">Ver todos</button>
+        </div>
       </div>
 
     </div>
   </main>
 
-  <footer id="footer" class="bg-dark py-5 mt-5">
+  <footer id="footer" class="bg-dark py-5">
 
     <div class="logo">
       <img src="img/pedro.jpg" alt="logo" width="50px">
