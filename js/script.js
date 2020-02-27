@@ -53,8 +53,6 @@ function getData() {
   axios.get(endpoints["perfil"])
     .then(function (response) {
       saveData(response.data);
-      console.log();
-      console.log(response.status);
     });
 }
 
@@ -62,8 +60,6 @@ function getRespositoryes() {
   axios.get(localendpoint)
     .then(function (response) {
       saveRespositoryes(response.data);
-      console.log();
-      console.log(response.status);
     });
 }
 
@@ -101,7 +97,7 @@ function showData() {
 
     // get readme
 
-  }, 300);
+  }, 1000);
 }
 
 function showProjects() {
@@ -176,8 +172,13 @@ function showMenu() {
   };
 }
 
-function getReadme(uri) {
-  axios.get(uri)
+function showModal(position) {
+  var endpoint = endpoints["raw"].replace(
+    "##",
+    repositorys["response"][position].name
+  );
+
+  axios.get(endpoint)
     .then(function (response) {
       var content = response.data;
       var converter = new showdown.Converter();
@@ -185,16 +186,10 @@ function getReadme(uri) {
 
       document.getElementById("modal-content").innerHTML = html;
       $(".descrition-modal").modal("show");
+    }).catch(() => {
+      document.getElementById("modal-content").innerHTML = `<p>Documentação em desenvolvimento</p>`;
+      $(".descrition-modal").modal("show");
     });
-}
-
-function showModal(position) {
-  var endpoint = endpoints["raw"].replace(
-    "##",
-    repositorys["response"][position].name
-  );
-
-  getReadme(endpoint);
 }
 
 addEventListener("load", startLoad);

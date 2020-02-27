@@ -111,11 +111,19 @@
 }
 
 #modal-content h1 {
-  font-size: 1.5em;
+  font-size: 1.8em;
+}
+
+#modal-content h2 {
+  font-size: 1.6em;
+}
+
+#modal-content h3 {
+  font-size: 1.2em;
 }
 
 #modal-content {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 #modal-content * {
