@@ -178,8 +178,17 @@
   transition: 250ms;
 }
 
+#footer .social-map .icon-social-map a {
+  transition: 250ms ease-in-out;
+  color: #021017;
+}
+
 #footer .social-map .icon-social-map:hover {
   background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+  color: #fff;
+}
+
+#footer .social-map .icon-social-map:hover a {
   color: #fff;
 }
 
