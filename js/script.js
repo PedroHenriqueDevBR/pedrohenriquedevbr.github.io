@@ -57,7 +57,7 @@ function getData() {
 }
 
 function getRespositoryes() {
-  axios.get(localendpoint)
+  axios.get(endpoints['repos'])
     .then(function (response) {
       saveRespositoryes(response.data);
     });
@@ -104,6 +104,15 @@ function showProjects() {
   var projects = document.getElementById("projects-cards");
   var contProjects = 0;
   var showProjects = "";
+  repositorys['response'].sort(function (a, b) {
+    if (a.updated_at < b.updated_at) {
+      return 1;
+    }
+    if (a.updated_at > b.updated_at) {
+      return -1;
+    }
+    return 0;
+  });
 
   for (var repository of repositorys["response"]) {
     if (contProjects === 0) {
