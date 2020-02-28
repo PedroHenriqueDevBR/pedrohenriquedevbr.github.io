@@ -122,7 +122,7 @@ function showProjects() {
     } else {
       showProjects += `${getCardElement(repository, contProjects)}`;
     }
-    if (contProjects === 5) {
+    if (contProjects === 8) {
       break;
     } else {
       contProjects++;

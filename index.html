@@ -25,13 +25,13 @@
     <div class="collapse navbar-collapse justify-content-end" id="nav-menu">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Home</a>
+          <a href="#presentation" class="nav-link text-white">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Sobre</a>
+          <a href="#person-description" class="nav-link text-white">Sobre</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link text-white">Projetos</a>
+          <a href="#projects" class="nav-link text-white">Projetos</a>
         </li>
       </ul>
     </div>
@@ -69,7 +69,7 @@
                   </p>
                 </li>
                 <li class="list-group-item">
-                  <p>
+                  <p class="text-truncate" style="width: 100% !important;">
                     <i class="fas fa-envelope icon"></i>
                     pedro.henrique.particular@gmail.com
                   </p>
@@ -142,11 +142,13 @@
     </div>
 
     <!-- Listagem de projetos -->
-    <div class="bg-light mt-5 pt-2">
+    <div class="bg-light mt-5 pt-2" id="projects">
 
       <div class="container">
         <div class="d-flex justify-content-between">
           <h1 class="mb-4">Meus projetos</h1>
+
+          <!-- Button for see all projects -->
           <div class="d-flex align-items-center">
             <a target="_blank" href="https://github.com/PedroHenriqueDevBR?tab=repositories"
               class="btn btn-success btn-show-projects">Ver todos</a>
@@ -155,6 +157,7 @@
 
         <div id="projects-cards"></div>
 
+        <!-- Button for see all projects -->
         <div class="d-flex align-items-center py-3 container-btn-show-projects-aux">
           <a target="_blank" href="https://github.com/PedroHenriqueDevBR?tab=repositories"
             class="btn btn-success btn-show-projects-aux">Ver todos</a>
@@ -173,11 +176,9 @@
 
     <div class="site-map">
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Projetos</a></li>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Sobre</a></li>
+        <li><a href="#presentation">Home</a></li>
+        <li><a href="#person-description">Sobre</a></li>
+        <li><a href="#projects">Projetos</a></li>
       </ul>
     </div>
 
@@ -217,14 +218,14 @@
 
   <div class="modal fade descrition-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
-      <div class="modal-content py-2 pl-1">
+      <div class="modal-content py-2">
         <div class="modal-header">
           <h5 class="modal-title">Descrição</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id="modal-content"></div>
+        <div class="modal-body px-4" id="modal-content"></div>
       </div>
     </div>
   </div>
