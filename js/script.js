@@ -2,7 +2,8 @@ var localendpoint = "../response.json";
 var endpoints = {
   perfil: "https://api.github.com/users/pedrohenriquedevbr",
   repos: "https://api.github.com/users/pedrohenriquedevbr/repos",
-  raw: "https://raw.githubusercontent.com/PedroHenriqueDevBR/##/master/README.md"
+  raw:
+    "https://raw.githubusercontent.com/PedroHenriqueDevBR/##/master/README.md"
 };
 var languageColor = {
   Python: "#8BC34A",
@@ -28,19 +29,30 @@ var bgdGradients = [
   `background: #D66D75; background: -webkit-linear-gradient(to top, #E29587, #D66D75); background: linear-gradient(to top, #E29587, #D66D75);`,
   `background: #6a3093; background: -webkit-linear-gradient(to top, #a044ff, #6a3093); background: linear-gradient(to top, #a044ff, #6a3093);`
 ];
-var data = { // dados do peril
+var data = {
+  // dados do peril
   response: {}
 };
-var repositorys = { // todos os repositórios
+var repositorys = {
+  // todos os repositórios
   response: {}
 };
 var readme = [];
 var cards;
+var maintenance = true;
 
 function startLoad() {
   getData();
   getRespositoryes();
-  document.getElementById("presentation").style += `${bgdGradients[getBgdPosition(0, 6)]}`;
+  document.getElementById("presentation").style += `${
+    bgdGradients[getBgdPosition(0, 6)]
+  }`;
+  if (maintenance) {
+    setTimeout(() => {
+      console.log("Chegou aqui");
+      $(".alert-modal").modal("show");
+    }, 1000);
+  }
 }
 
 function getBgdPosition(min, max) {
@@ -50,17 +62,15 @@ function getBgdPosition(min, max) {
 }
 
 function getData() {
-  axios.get(endpoints["perfil"])
-    .then(function (response) {
-      saveData(response.data);
-    });
+  axios.get(endpoints["perfil"]).then(function(response) {
+    saveData(response.data);
+  });
 }
 
 function getRespositoryes() {
-  axios.get(endpoints['repos'])
-    .then(function (response) {
-      saveRespositoryes(response.data);
-    });
+  axios.get(endpoints["repos"]).then(function(response) {
+    saveRespositoryes(response.data);
+  });
 }
 
 function saveData(json) {
@@ -96,7 +106,6 @@ function showData() {
     showProjects();
 
     // get readme
-
   }, 1000);
 }
 
@@ -104,7 +113,7 @@ function showProjects() {
   var projects = document.getElementById("projects-cards");
   var contProjects = 0;
   var showProjects = "";
-  repositorys['response'].sort(function (a, b) {
+  repositorys["response"].sort(function(a, b) {
     if (a.updated_at < b.updated_at) {
       return 1;
     }
@@ -145,13 +154,13 @@ function getCardElement(repository, position) {
   return `
         <div class="card card-show" style="width: 18rem;" onClick="showModal(${position})">
             <img src="img/${
-    languageImg[repository.language]
-    }" height="200px" class="card-img-top">
+              languageImg[repository.language]
+            }" height="200px" class="card-img-top">
             <div class="card-body">
                 <p>
                     <span class="badge badge-primary px-3 py-2" style="background: ${
-    languageColor[repository.language]
-    };">${repository.language}</span>
+                      languageColor[repository.language]
+                    };">${repository.language}</span>
                 </p>
                 <h3>
                     ${repository.name}
@@ -187,16 +196,20 @@ function showModal(position) {
     repositorys["response"][position].name
   );
 
-  axios.get(endpoint)
-    .then(function (response) {
+  axios
+    .get(endpoint)
+    .then(function(response) {
       var content = response.data;
       var converter = new showdown.Converter();
       var html = converter.makeHtml(content);
 
       document.getElementById("modal-content").innerHTML = html;
       $(".descrition-modal").modal("show");
-    }).catch(() => {
-      document.getElementById("modal-content").innerHTML = `<p>Documentação em desenvolvimento</p>`;
+    })
+    .catch(() => {
+      document.getElementById(
+        "modal-content"
+      ).innerHTML = `<p>Documentação em desenvolvimento</p>`;
       $(".descrition-modal").modal("show");
     });
 }
