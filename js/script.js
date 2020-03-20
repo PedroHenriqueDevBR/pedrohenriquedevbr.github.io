@@ -39,7 +39,7 @@ var repositorys = {
 };
 var readme = [];
 var cards;
-var maintenance = true;
+var maintenance = false;
 
 function startLoad() {
   getData();
