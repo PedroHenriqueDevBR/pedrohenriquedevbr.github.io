@@ -1,4 +1,15 @@
-var localendpoint = "../response.json";
+// Documents element
+var nameElement = document.querySelector('#api-name');
+var photoElement = document.querySelector("#api-photo");
+var descriptionElement = document.querySelector("#api-description");
+var presentationElement = document.querySelector('#presentation');
+var projectsElement = document.getElementById("projects-cards");
+
+// Data
+var data = [];
+var repositorys = [];
+var maintenance = false;
+
 var endpoints = {
   perfil: "https://api.github.com/users/pedrohenriquedevbr",
   repos: "https://api.github.com/users/pedrohenriquedevbr/repos",
@@ -29,24 +40,8 @@ var bgdGradients = [
   `background: #D66D75; background: -webkit-linear-gradient(to top, #E29587, #D66D75); background: linear-gradient(to top, #E29587, #D66D75);`,
   `background: #6a3093; background: -webkit-linear-gradient(to top, #a044ff, #6a3093); background: linear-gradient(to top, #a044ff, #6a3093);`
 ];
-var data = {
-  // dados do peril
-  response: {}
-};
-var repositorys = {
-  // todos os repositórios
-  response: {}
-};
-var readme = [];
-var cards;
-var maintenance = false;
 
-function startLoad() {
-  getData();
-  getRespositoryes();
-  document.getElementById("presentation").style += `${
-    bgdGradients[getBgdPosition(0, 6)]
-  }`;
+function hasMaintenance() {
   if (maintenance) {
     setTimeout(() => {
       console.log("Chegou aqui");
@@ -55,122 +50,134 @@ function startLoad() {
   }
 }
 
+function startLoad() {
+  getData();
+  getRespositoryes();
+  hasMaintenance();
+}
+
+function getData() {
+  axios.get(endpoints["perfil"])
+    .then(function (response) {
+      data = response.data;
+      showData();
+    })
+    .catch(function (error) {
+      console.warn(error);
+    });
+}
+
+function getRespositoryes() {
+  axios.get(endpoints["repos"])
+    .then(function (response) {
+      repositorys = response.data;
+      repositorys.sort(function (a, b) {
+        if (a.updated_at < b.updated_at) {
+          return 1;
+        }
+        if (a.updated_at > b.updated_at) {
+          return -1;
+        }
+        return 0;
+      });
+      showProjects();
+    })
+    .catch(function (error) {
+      console.warn(error);
+    });
+}
+
 function getBgdPosition(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function getData() {
-  axios.get(endpoints["perfil"]).then(function(response) {
-    saveData(response.data);
-  });
-}
-
-function getRespositoryes() {
-  axios.get(endpoints["repos"]).then(function(response) {
-    saveRespositoryes(response.data);
-  });
-}
-
-function saveData(json) {
-  data["response"] = json;
-}
-
-function saveRespositoryes(json) {
-  repositorys["response"] = json;
-}
-
 function showData() {
-  setTimeout(() => {
-    var names = document.getElementsByClassName("api-name");
-    var photos = document.getElementsByClassName("api-photo");
-    var descriptions = document.getElementsByClassName("api-description");
-
-    // set names
-    for (var name of names) {
-      name.innerHTML = data["response"].name.toUpperCase();
-    }
-
-    // set descriptions
-    for (var description of descriptions) {
-      description.innerHTML = data["response"].bio;
-    }
-
-    // set photos
-    for (photo of photos) {
-      photo.src = data["response"].avatar_url;
-    }
-
-    // List last projects
-    showProjects();
-
-    // get readme
-  }, 1000);
+  // set data
+  nameElement.innerHTML = data.name.toUpperCase();
+  descriptionElement.innerHTML = data.bio;
+  photoElement.src = data.avatar_url;
+  presentationElement.style += `${bgdGradients[getBgdPosition(0, 6)]}`;
 }
 
 function showProjects() {
-  var projects = document.getElementById("projects-cards");
   var contProjects = 0;
-  var showProjects = "";
-  repositorys["response"].sort(function(a, b) {
-    if (a.updated_at < b.updated_at) {
-      return 1;
-    }
-    if (a.updated_at > b.updated_at) {
-      return -1;
-    }
-    return 0;
-  });
+  var cardList = [];
+  var deckList = [];
 
-  for (var repository of repositorys["response"]) {
-    if (contProjects === 0) {
-      showProjects += `
-                      <!-- Card deck -->
-                      <div class="card-deck mt-3">
-                    `;
-    }
-    if (contProjects % 3 === 0) {
-      showProjects += `
-                    </div>
-                    <!-- Card deck -->
-                    <div class="card-deck mt-3">
-                    ${getCardElement(repository, contProjects)}
-                `;
-    } else {
-      showProjects += `${getCardElement(repository, contProjects)}`;
-    }
-    if (contProjects === 8) {
-      break;
-    } else {
-      contProjects++;
+  for (var repository of repositorys) {
+    cardList.push(getCardElement(repository, contProjects));
+    contProjects++;
+  }
+
+  var cardListAux = [];
+  var listAux = [];
+
+  for (var i = 0; i < 9; i++) {
+    listAux.push(cardList[i]);
+
+    if ((i + 1) % 3 === 0) {
+      cardListAux.push(listAux);
+      listAux = [];
     }
   }
-  showProjects += "</div>";
-  projects.innerHTML = showProjects;
+
+  for (var i = 0; i < cardListAux.length; i++) {
+    var deckElement = document.createElement('div');
+    deckElement.setAttribute('class', 'card-deck mt-3');
+
+    for (var j = 0; j < cardListAux[i].length; j++) {
+      deckElement.appendChild(cardListAux[i][j]);
+    }
+
+    projectsElement.appendChild(deckElement);
+  }
+
 }
 
 function getCardElement(repository, position) {
-  return `
-        <div class="card card-show" style="width: 18rem;" onClick="showModal(${position})">
-            <img src="img/${
-              languageImg[repository.language]
-            }" height="200px" class="card-img-top">
-            <div class="card-body">
-                <p>
-                    <span class="badge badge-primary px-3 py-2" style="background: ${
-                      languageColor[repository.language]
-                    };">${repository.language}</span>
-                </p>
-                <h3>
-                    ${repository.name}
-                </h3>
-                <p class="card-text">
-                    ${repository.description}
-                </p>
-            </div>
-        </div>
-    `;
+
+  var cardElement = document.createElement('div');
+  cardElement.setAttribute('class', 'card card-show');
+  cardElement.setAttribute('style', 'width: 18rem;');
+  cardElement.setAttribute('onclick', 'showModal(' + position + ')');
+
+  var imageElement = document.createElement('img');
+  imageElement.setAttribute('class', 'card-img-top');
+  imageElement.setAttribute('src', `img/${languageImg[repository.language]}`);
+  imageElement.setAttribute('height', '200px');
+
+  var cardBodyElement = document.createElement('div');
+  cardBodyElement.setAttribute('class', 'card-body');
+
+  var badgeElement = document.createElement('p');
+  var spanElement = document.createElement('span');
+  spanElement.setAttribute('class', 'badge badge-primary px-3 py-2');
+  spanElement.style.background = `${languageColor[repository.language]}`;
+  var spanText = document.createTextNode(repository.language);
+
+  var repositoryNameElement = document.createElement('h3');
+  var repositoryNameText = document.createTextNode(repository.name);
+
+  var descriptionElement = document.createElement('p');
+  var descriptionText = document.createTextNode(repository.description);
+
+  // Assembly of parts  
+  spanElement.appendChild(spanText);
+  badgeElement.appendChild(spanElement);
+
+  repositoryNameElement.appendChild(repositoryNameText);
+  descriptionElement.appendChild(descriptionText);
+
+  cardBodyElement.appendChild(badgeElement);
+  cardBodyElement.appendChild(repositoryNameElement);
+  cardBodyElement.appendChild(descriptionElement);
+
+  cardElement.appendChild(imageElement);
+  cardElement.appendChild(cardBodyElement);
+
+  return cardElement;
 }
 
 function showMenu() {
@@ -191,14 +198,12 @@ function showMenu() {
 }
 
 function showModal(position) {
-  var endpoint = endpoints["raw"].replace(
-    "##",
-    repositorys["response"][position].name
-  );
+  var url = endpoints["raw"];
+  var endpoint = url.replace('##', repositorys[position].name)
 
   axios
     .get(endpoint)
-    .then(function(response) {
+    .then(function (response) {
       var content = response.data;
       var converter = new showdown.Converter();
       var html = converter.makeHtml(content);
@@ -206,14 +211,14 @@ function showModal(position) {
       document.getElementById("modal-content").innerHTML = html;
       $(".descrition-modal").modal("show");
     })
-    .catch(() => {
+    .catch((error) => {
       document.getElementById(
         "modal-content"
       ).innerHTML = `<p>Documentação em desenvolvimento</p>`;
+
       $(".descrition-modal").modal("show");
     });
 }
 
 addEventListener("load", startLoad);
-addEventListener("load", showData);
 addEventListener("load", showMenu);
