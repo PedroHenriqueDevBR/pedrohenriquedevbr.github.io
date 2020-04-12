@@ -309,26 +309,33 @@
 
         <div class="contact-us">
             <div class="container">
+
                 <p>Entre em contato conosco</p>
+
                 <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" action="mailto:p.lyma18@gmail.com" method="POST" enctype="text/plain">
+
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="input_text" type="text" data-length="10" class="white-text">
-                                <label for="input_text" class="white-text">Nome Completo</label>
+                                <input id="nome" type="text" data-length="10" class="white-text" name="nome">
+                                <label for="nome" class="white-text">Nome Completo</label>
                             </div>
+
                             <div class="input-field col s6">
-                                <input id="input_text" type="text" data-length="10" class="white-text">
-                                <label for="input_text" class="white-text">Contato</label>
+                                <input id="contato" type="text" data-length="10" class="white-text" name="contato">
+                                <label for="contato" class="white-text">Contato</label>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="textarea2" class="materialize-textarea white-text"
-                                    data-length="120"></textarea>
-                                <label for="textarea2" class="white-text">Mensagem</label>
+                                <textarea id="mensagem" class="materialize-textarea white-text" data-length="120"
+                                    name="mensagem"></textarea>
+                                <label for="mensagem" class="white-text">Mensagem</label>
                             </div>
                         </div>
+
+                        <input type="submit" value="Enviar" class="btn red" style="width: 100%;">
                     </form>
                 </div>
             </div>
