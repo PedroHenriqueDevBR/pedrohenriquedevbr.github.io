@@ -22,7 +22,8 @@ var languageColor = {
   TypeScript: "#673AB7",
   Dart: "#2196F3",
   HTML: "#FF5722",
-  JavaScript: "#FFCA28"
+  JavaScript: "#FFCA28",
+  Vue: '#4DB6AC'
 };
 var languageImg = {
   Python: "python.jpg",
@@ -30,7 +31,8 @@ var languageImg = {
   TypeScript: "typescript.jpg",
   Dart: "dart.png",
   HTML: "html.png",
-  JavaScript: "js.png"
+  JavaScript: "js.png",
+  Vue: "vue.png"
 };
 var bgdGradients = [
   `background: rgb(2,0,36); background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);`,
