@@ -23,7 +23,8 @@ var languageColor = {
   Dart: "#2196F3",
   HTML: "#FF5722",
   JavaScript: "#FFCA28",
-  Vue: '#4DB6AC'
+  Vue: '#4DB6AC',
+  Assembly: '#5C6BC0'
 };
 var languageImg = {
   Python: "python.jpg",
@@ -32,7 +33,8 @@ var languageImg = {
   Dart: "dart.png",
   HTML: "html.png",
   JavaScript: "js.png",
-  Vue: "vue.png"
+  Vue: "vue.png",
+  Assembly: 'assembly.jpg'
 };
 var bgdGradients = [
   `background: rgb(2,0,36); background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);`,
@@ -46,7 +48,6 @@ var bgdGradients = [
 function hasMaintenance() {
   if (maintenance) {
     setTimeout(() => {
-      console.log("Chegou aqui");
       $(".alert-modal").modal("show");
     }, 1000);
   }
