@@ -24,7 +24,9 @@ var languageColor = {
   HTML: "#FF5722",
   JavaScript: "#FFCA28",
   Vue: '#4DB6AC',
-  Assembly: '#5C6BC0'
+  Assembly: '#5C6BC0',
+  null: "#FF5722",
+  GDScript: "#0288d1",
 };
 var languageImg = {
   Python: "python.jpg",
@@ -34,7 +36,10 @@ var languageImg = {
   HTML: "html.png",
   JavaScript: "js.png",
   Vue: "vue.png",
-  Assembly: 'assembly.jpg'
+  Assembly: 'assembly.jpg',
+  CMake: "dart.png",
+  null: "html.png",
+  GDScript: "godot.jpg",
 };
 var bgdGradients = [
   `background: rgb(2,0,36); background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);`,
@@ -208,8 +213,7 @@ function showModal(position) {
     .get(endpoint)
     .then(function (response) {
       var content = response.data;
-      var converter = new showdown.Converter();
-      var html = converter.makeHtml(content);
+      var html = marked(content);
 
       document.getElementById("modal-content").innerHTML = html;
       $(".descrition-modal").modal("show");
