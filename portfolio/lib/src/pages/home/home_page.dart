@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/pages/home/pages/about/about_page.dart';
+import 'package:portfolio/src/pages/home/pages/portfolio/portfolio_page.dart';
+import 'package:portfolio/src/pages/home/pages/presentation/presentation_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,61 +11,79 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  int selectedPageIndex = 0;
+
+  final pages = [
+    PresentationPage(),
+    AboutPage(),
+    PortfolioPage(),
+  ];
+
+  void changePage(int page) {
+    setState(() {
+      selectedPageIndex = page;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
-      body: Container(
+      body: SizedBox(
         width: size.width,
         height: size.height,
         child: Row(
           children: [
-            NavigationRail(
-              leading: Container(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: const Center(
-                  child: Text(
-                    'Pedro',
-                  ),
-                ),
-              ),
-              selectedIndex: _selectedIndex,
-              onDestinationSelected: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-              useIndicator: true,
-              labelType: NavigationRailLabelType.selected,
-              backgroundColor: Theme.of(context).colorScheme.onSecondary,
-              destinations: [
-                const NavigationRailDestination(
-                  icon: Icon(Icons.home_outlined),
-                  selectedIcon: Icon(Icons.home),
-                  label: Text('First'),
-                ),
-                const NavigationRailDestination(
-                  icon: Icon(Icons.bookmark_border),
-                  selectedIcon: Icon(Icons.book),
-                  label: Text('Second'),
-                ),
-                const NavigationRailDestination(
-                  icon: Icon(Icons.star_border),
-                  selectedIcon: Icon(Icons.star),
-                  label: Text('Third'),
-                ),
-              ],
-            )
+            railMenuWidget(),
+            Expanded(
+              child: pages[selectedPageIndex],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
-      ),
     );
   }
+
+  Widget railMenuWidget() => NavigationRail(
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/images/avatar.png',
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(height: 8.0),
+              const Text(
+                'Pedro',
+              ),
+            ],
+          ),
+        ),
+        selectedIndex: selectedPageIndex,
+        onDestinationSelected: changePage,
+        useIndicator: true,
+        labelType: NavigationRailLabelType.selected,
+        backgroundColor: Theme.of(context).colorScheme.onSecondary,
+        destinations: const [
+          NavigationRailDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home),
+            label: Text('Home'),
+          ),
+          NavigationRailDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person),
+            label: Text('Sobre'),
+          ),
+          NavigationRailDestination(
+            icon: Icon(Icons.coffee_maker_outlined),
+            selectedIcon: Icon(Icons.coffee_maker),
+            label: Text('Portfólio'),
+          ),
+        ],
+      );
 }
