@@ -19,7 +19,7 @@ class AboutPage extends StatelessWidget {
           top: 40.0,
           right: 160.0,
           left: 160.0,
-          bottom: 350.0,
+          bottom: 150.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,14 +106,10 @@ class AboutPage extends StatelessWidget {
             itemBuilder: (context, index) {
               ExperienceModel experience = controller.experienceList[index];
               return Observer(builder: (context) {
-                return Column(
-                  children: [
-                    ExperienceCardWidget(
-                      experience: experience,
-                      selected: controller.experienceItemSelected == index,
-                      onTap: () => controller.setExperienceItemSelected(index),
-                    ),
-                  ],
+                return ExperienceCardWidget(
+                  experience: experience,
+                  selected: controller.experienceItemSelected == index,
+                  onTap: () => controller.setExperienceItemSelected(index),
                 );
               });
             },
@@ -152,6 +148,36 @@ class AboutPage extends StatelessWidget {
               });
             },
           ),
+          Observer(builder: (context) {
+            return tecnologyDescriptionWidget(context);
+          }),
         ],
       );
+
+  Widget tecnologyDescriptionWidget(BuildContext context) =>
+      controller.tecnologyItemSelected == -1
+          ? Container()
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const SizedBox(height: 16.0),
+                Text(
+                  controller
+                      .tecnologyList[controller.tecnologyItemSelected].name,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                ),
+                const SizedBox(height: 8.0),
+                Text(
+                  controller.tecnologyList[controller.tecnologyItemSelected]
+                      .description,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                ),
+              ],
+            );
 }
