@@ -20,12 +20,15 @@ dependencies:
   mobx: ^2.0.6+1
   flutter_mobx: ^2.0.4
   url_launcher: ^6.1.2
+  flutter_markdown: ^0.6.10
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  mocktail: ^0.1.4
   mobx_codegen: ^2.0.2
   build_runner: ^2.1.1
 
