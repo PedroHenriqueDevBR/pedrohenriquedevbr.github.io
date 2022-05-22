@@ -1,52 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:portfolio/src/pages/home/pages/about/widget/experience_card_widget.dart';
+import 'package:portfolio/src/pages/home/pages/about/widget/tecnology_card_widget.dart';
 import 'package:portfolio/src/shared/core/app_images.dart';
+import 'package:portfolio/src/shared/models/experience_model.dart';
+import 'package:portfolio/src/shared/models/tecnology_model.dart';
+import './store/about_store.dart';
 
 class AboutPage extends StatelessWidget {
-  const AboutPage({Key? key}) : super(key: key);
+  final controller = AboutStore();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SizedBox(
-      width: size.width,
-      height: size.height,
-      child: Scrollbar(
-        child: SingleChildScrollView(
-          padding:
-              const EdgeInsets.symmetric(horizontal: 160.0, vertical: 40.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        avatarWidget(),
-                        const SizedBox(height: 32.0),
-                        experienceWidget(context),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        presentationWidget(context),
-                        const SizedBox(height: 32.0),
-                        tecnologyWidget(context),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+    return Scrollbar(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.only(
+          top: 40.0,
+          right: 160.0,
+          left: 160.0,
+          bottom: 350.0,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                Expanded(child: avatarWidget()),
+                Expanded(child: presentationWidget(context)),
+              ],
+            ),
+            const SizedBox(height: 32.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: experienceWidget(context)),
+                const VerticalDivider(),
+                Expanded(child: tecnologyWidget(context)),
+              ],
+            )
+          ],
         ),
       ),
     );
@@ -58,47 +52,9 @@ class AboutPage extends StatelessWidget {
         height: 350.0,
       );
 
-  Widget tecnologyCardWidget({
-    required BuildContext context,
-    required String name,
-    required assetPath,
-  }) =>
-      Container(
-        width: 95,
-        height: 95,
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(12.0),
-          ),
-          border: Border.all(
-            color: Theme.of(context).colorScheme.onPrimary,
-            width: 3.0,
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Image.asset(
-                assetPath,
-                height: 40.0,
-              ),
-              Text(
-                'Python',
-                style: Theme.of(context)
-                    .textTheme
-                    .button
-                    ?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
-              ),
-            ],
-          ),
-        ),
-      );
-
-  Widget presentationWidget(BuildContext context) => SizedBox(
-        width: 550.0,
+  Widget presentationWidget(BuildContext context) => Expanded(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Pedro Henrique',
@@ -137,51 +93,38 @@ class AboutPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '# Experiência',
+            '# Experiências',
             style: Theme.of(context).textTheme.headline2?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
           ),
-          const SizedBox(height: 8.0),
-          ListTile(
-            title: Text(
-              'Defensoria Pública do Estado do Piauí',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-            ),
-            subtitle: Text('De Dez/2021 até o momento',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                )),
-          ),
-          const SizedBox(height: 4.0),
-          ListTile(
-            title: Text('Grupo Vanguarda',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                )),
-            subtitle: Text('De Mar/2019 até Abril/2021',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                )),
-          ),
-          const SizedBox(height: 4.0),
-          ListTile(
-            title: Text('Med Imagem',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                )),
-            subtitle: Text('De Mar/2015 até Dez/2016',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                )),
+          const SizedBox(height: 32.0),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: controller.experienceList.length,
+            itemBuilder: (context, index) {
+              ExperienceModel experience = controller.experienceList[index];
+              return Observer(builder: (context) {
+                return Column(
+                  children: [
+                    ExperienceCardWidget(
+                      experience: experience,
+                      selected: controller.experienceItemSelected == index,
+                      onTap: () => controller.setExperienceItemSelected(index),
+                    ),
+                  ],
+                );
+              });
+            },
           ),
         ],
       );
 
   Widget tecnologyWidget(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Text(
             '# Tecnologias',
@@ -189,57 +132,25 @@ class AboutPage extends StatelessWidget {
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
           ),
-          const SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              tecnologyCardWidget(
-                context: context,
-                name: 'Python',
-                assetPath: AppImages.PYTHON,
-              ),
-              tecnologyCardWidget(
-                context: context,
-                name: 'Django',
-                assetPath: AppImages.DJANGO,
-              ),
-              tecnologyCardWidget(
-                context: context,
-                name: 'HTML5',
-                assetPath: AppImages.HTML5,
-              ),
-              tecnologyCardWidget(
-                context: context,
-                name: 'CSS3',
-                assetPath: AppImages.CSS3,
-              ),
-            ],
-          ),
-          const SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              tecnologyCardWidget(
-                context: context,
-                name: 'JavaScript',
-                assetPath: AppImages.JS,
-              ),
-              tecnologyCardWidget(
-                context: context,
-                name: 'Flutter',
-                assetPath: AppImages.FLUTTER,
-              ),
-              tecnologyCardWidget(
-                context: context,
-                name: 'Linux',
-                assetPath: AppImages.LINUX,
-              ),
-              tecnologyCardWidget(
-                context: context,
-                name: 'Docker',
-                assetPath: AppImages.DOCKER,
-              ),
-            ],
+          const SizedBox(height: 32.0),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 16.0,
+              mainAxisSpacing: 16.0,
+            ),
+            itemCount: controller.tecnologyList.length,
+            itemBuilder: (context, index) {
+              return Observer(builder: (context) {
+                return TecnologyCardWidget(
+                  tecnology: controller.tecnologyList[index],
+                  selected: controller.tecnologyItemSelected == index,
+                  onTap: () => controller.setTecnologyItemSelected(index),
+                );
+              });
+            },
           ),
         ],
       );
