@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/src/shared/core/app_images.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class PresentationPage extends StatelessWidget {
   const PresentationPage({Key? key}) : super(key: key);
@@ -40,34 +42,59 @@ class PresentationPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  FontAwesomeIcons.linkedinIn,
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  size: 40.0,
+                IconButton(
+                  onPressed: (() => launchUrlString(
+                        'https://www.linkedin.com/in/pedro-henrique-br/',
+                      )),
+                  icon: Icon(
+                    FontAwesomeIcons.linkedinIn,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  iconSize: 40.0,
                 ),
-                const SizedBox(width: 32.0),
-                Icon(
-                  FontAwesomeIcons.github,
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  size: 40.0,
+                const SizedBox(width: 16.0),
+                IconButton(
+                  onPressed: (() => launchUrlString(
+                        'https://github.com/pedrohenriquedevbr',
+                      )),
+                  icon: Icon(
+                    FontAwesomeIcons.github,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  iconSize: 40.0,
                 ),
-                const SizedBox(width: 32.0),
-                Icon(
-                  FontAwesomeIcons.youtube,
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  size: 40.0,
+                const SizedBox(width: 16.0),
+                IconButton(
+                  onPressed: (() => launchUrlString(
+                        'https://www.youtube.com/channel/UCsfCR2wETP80000IuMTPYNA',
+                      )),
+                  icon: Icon(
+                    FontAwesomeIcons.youtube,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  iconSize: 40.0,
                 ),
-                const SizedBox(width: 32.0),
-                Icon(
-                  FontAwesomeIcons.whatsapp,
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  size: 40.0,
+                const SizedBox(width: 16.0),
+                IconButton(
+                  onPressed: (() => launchUrlString(
+                        'https://api.whatsapp.com/send?phone=5586988639775&text=Ol%C3%A1%20Pedro%2C%20meu%20nome%20%C3%A9%20_',
+                      )),
+                  icon: Icon(
+                    FontAwesomeIcons.whatsapp,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  iconSize: 40.0,
                 ),
-                const SizedBox(width: 32.0),
-                Icon(
-                  FontAwesomeIcons.instagram,
-                  color: Theme.of(context).colorScheme.inversePrimary,
-                  size: 40.0,
+                const SizedBox(width: 16.0),
+                IconButton(
+                  onPressed: (() => launchUrlString(
+                        'https://www.instagram.com/pedro_lymma/',
+                      )),
+                  icon: Icon(
+                    FontAwesomeIcons.instagram,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  iconSize: 40.0,
                 ),
               ],
             ),

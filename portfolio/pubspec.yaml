@@ -19,6 +19,7 @@ dependencies:
   asuka: ^2.0.0+1
   mobx: ^2.0.6+1
   flutter_mobx: ^2.0.4
+  url_launcher: ^6.1.2
 
 dev_dependencies:
   flutter_test:
