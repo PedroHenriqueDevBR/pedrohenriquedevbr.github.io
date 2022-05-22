@@ -21,13 +21,24 @@ class HttpClientService implements IClientHTTP {
     final uri = _getBaseUrl(url);
     try {
       Response response = await http.get(uri);
-      return HttpResponseModel(
-        statusCode: response.statusCode,
-        data: jsonDecode(
-            response.body.isNotEmpty ? utf8.decode(response.bodyBytes) : '{}'),
-        headers: response.headers,
-      );
+      try {
+        return HttpResponseModel(
+          statusCode: response.statusCode,
+          data: jsonDecode(response.body.isNotEmpty
+              ? utf8.decode(response.bodyBytes)
+              : '{}'),
+          headers: response.headers,
+        );
+      } on FormatException catch (error) {
+        return HttpResponseModel(
+          statusCode: response.statusCode,
+          data: response.body,
+          headers: response.headers,
+        );
+      }
     } catch (error) {
+      print('--------------------------------------------');
+      print(error);
       rethrow;
     }
   }

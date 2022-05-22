@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/src/pages/home/home_page.dart';
+import 'package:asuka/asuka.dart' as asuka;
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      builder: asuka.builder,
+      navigatorObservers: [
+        asuka.asukaHeroController //if u don`t add this Hero will not work
+      ],
+      title: 'PedroHenriqueDevBR',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           useMaterial3: true,
