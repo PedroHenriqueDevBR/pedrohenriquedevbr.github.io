@@ -73,16 +73,19 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     ),
             ),
             const SizedBox(height: 16.0),
-            Container(
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Center(
-                child: ElevatedButton(
-                  onPressed:
-                      controller.loading ? null : controller.goToGithubProfile,
-                  child: const Text('Ver todos'),
+            Observer(builder: (context) {
+              return Container(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: controller.loading
+                        ? null
+                        : controller.goToGithubProfile,
+                    child: const Text('Ver todos'),
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
           ],
         ),
       ),
