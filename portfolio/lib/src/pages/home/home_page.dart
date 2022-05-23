@@ -13,12 +13,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedPageIndex = 0;
 
-  final pages = [
-    PresentationPage(),
-    AboutPage(),
-    PortfolioPage(),
-  ];
-
   void changePage(int page) {
     setState(() {
       selectedPageIndex = page;
@@ -30,14 +24,30 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
-      body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: Row(
+      appBar: AppBar(
+        title: const Text('PedroHenriqueDevBR'),
+      ),
+      body: SingleChildScrollView(
+        // physics: const PageScrollPhysics(),
+        child: Column(
           children: [
-            railMenuWidget(),
-            Expanded(
-              child: pages[selectedPageIndex],
+            Container(
+              constraints: BoxConstraints(
+                minHeight: size.height,
+              ),
+              child: const PresentationPage(),
+            ),
+            Container(
+              constraints: BoxConstraints(
+                minHeight: size.height,
+              ),
+              child: AboutPage(),
+            ),
+            Container(
+              constraints: BoxConstraints(
+                minHeight: size.height,
+              ),
+              child: const PortfolioPage(),
             ),
           ],
         ),

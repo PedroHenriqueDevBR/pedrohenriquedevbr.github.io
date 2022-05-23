@@ -4,7 +4,6 @@ import 'package:portfolio/src/pages/home/pages/about/widget/experience_card_widg
 import 'package:portfolio/src/pages/home/pages/about/widget/tecnology_card_widget.dart';
 import 'package:portfolio/src/shared/core/app_images.dart';
 import 'package:portfolio/src/shared/models/experience_model.dart';
-import 'package:portfolio/src/shared/models/tecnology_model.dart';
 import './store/about_store.dart';
 
 class AboutPage extends StatelessWidget {
@@ -13,35 +12,27 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scrollbar(
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.only(
-          top: 40.0,
-          right: 160.0,
-          left: 160.0,
-          bottom: 150.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                Expanded(child: avatarWidget()),
-                Expanded(child: presentationWidget(context)),
-              ],
-            ),
-            const SizedBox(height: 32.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(child: experienceWidget(context)),
-                const VerticalDivider(),
-                Expanded(child: tecnologyWidget(context)),
-              ],
-            )
-          ],
-        ),
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Expanded(child: avatarWidget()),
+              Expanded(child: presentationWidget(context)),
+            ],
+          ),
+          const SizedBox(height: 32.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(child: experienceWidget(context)),
+              const VerticalDivider(),
+              Expanded(child: tecnologyWidget(context)),
+            ],
+          )
+        ],
       ),
     );
   }
