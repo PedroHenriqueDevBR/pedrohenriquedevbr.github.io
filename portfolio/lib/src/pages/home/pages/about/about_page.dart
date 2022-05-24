@@ -4,6 +4,8 @@ import 'package:portfolio/src/pages/home/pages/about/widget/experience_card_widg
 import 'package:portfolio/src/pages/home/pages/about/widget/tecnology_card_widget.dart';
 import 'package:portfolio/src/shared/core/app_images.dart';
 import 'package:portfolio/src/shared/models/experience_model.dart';
+import 'package:responsive/flex_widget.dart';
+import 'package:responsive/responsive_row.dart';
 import './store/about_store.dart';
 
 class AboutPage extends StatelessWidget {
@@ -12,33 +14,48 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Row(
-          children: [
-            Expanded(child: avatarWidget()),
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.only(right: 64.0),
-              child: presentationWidget(context),
-            )),
-          ],
-        ),
-        const SizedBox(height: 32.0),
-        Padding(
-          padding: const EdgeInsets.all(128.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      width: size.width,
+      color: Colors.grey,
+      child: Column(
+        children: [
+          ResponsiveRow(
+            forceOnlyRow: true,
+            columnsCount: 12,
             children: [
-              Expanded(child: experienceWidget(context)),
-              const VerticalDivider(),
-              Expanded(child: tecnologyWidget(context)),
+              FlexWidget(
+                sm: 12,
+                md: 6,
+                lg: 6,
+                child: avatarWidget(),
+              ),
+              FlexWidget(
+                sm: 12,
+                md: 6,
+                lg: 6,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 64.0),
+                  child: presentationWidget(context),
+                ),
+              ),
             ],
           ),
-        )
-      ],
+          ResponsiveRow(children: [
+            FlexWidget(
+              sm: 12,
+              md: 12,
+              lg: 6,
+              child: experienceWidget(context),
+            ),
+            FlexWidget(
+              sm: 12,
+              md: 12,
+              lg: 6,
+              child: tecnologyWidget(context),
+            ),
+          ]),
+        ],
+      ),
     );
   }
 
