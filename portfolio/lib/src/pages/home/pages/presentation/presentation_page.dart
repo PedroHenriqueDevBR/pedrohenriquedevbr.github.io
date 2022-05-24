@@ -34,7 +34,7 @@ class _PresentationPageState extends State<PresentationPage> {
                         'Eu\nSou\nPedro',
                         textAlign: TextAlign.right,
                         style: Theme.of(context).textTheme.headline1?.copyWith(
-                              fontSize: size.width <= Responsive.md ? 60 : 120,
+                              fontSize: size.width <= Responsive.md ? 60 : 100,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
@@ -50,10 +50,10 @@ class _PresentationPageState extends State<PresentationPage> {
                       ? MainAxisAlignment.center
                       : MainAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      AppImages.AVATAR,
-                      width: 340.0,
-                      height: 340.0,
+                    Expanded(
+                      child: Image.asset(
+                        AppImages.AVATAR,
+                      ),
                     ),
                   ],
                 ),
