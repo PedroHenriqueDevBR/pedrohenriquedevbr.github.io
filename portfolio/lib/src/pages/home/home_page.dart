@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    print('${size.width} == ${Responsive.gridSize(size.width)}');
+    // print('${size.width} == ${Responsive.gridSize(size.width)}');
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onTertiaryContainer,
       appBar: AppBar(

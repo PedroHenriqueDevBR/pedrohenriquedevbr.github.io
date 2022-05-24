@@ -74,14 +74,14 @@ abstract class _PortfolioStore with Store {
     );
 
     asuka.showDialog(
-      barrierColor: Theme.of(pageContext).colorScheme.tertiary,
+      barrierColor: Theme.of(pageContext).colorScheme.onTertiaryContainer,
       builder: (buildContext) => Dialog(
         child: Column(
           children: [
             Container(
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-                color: Theme.of(pageContext).colorScheme.secondary,
+                color: Theme.of(pageContext).colorScheme.tertiary,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(24.0),
                   topRight: Radius.circular(24.0),
