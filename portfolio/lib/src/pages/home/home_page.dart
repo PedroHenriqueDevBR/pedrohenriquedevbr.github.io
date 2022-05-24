@@ -3,6 +3,7 @@ import 'package:portfolio/src/pages/home/pages/about/about_page.dart';
 import 'package:portfolio/src/pages/home/pages/portfolio/portfolio_page.dart';
 import 'package:portfolio/src/pages/home/pages/presentation/presentation_page.dart';
 import 'package:portfolio/src/shared/core/app_images.dart';
+import 'package:responsive/logic.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    print('${size.width} == ${Responsive.gridSize(size.width)}');
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onTertiaryContainer,
       appBar: AppBar(
@@ -71,12 +73,7 @@ class _HomePageState extends State<HomePage> {
               ),
               child: AboutPage(),
             ),
-            Container(
-              constraints: BoxConstraints(
-                minHeight: size.height,
-              ),
-              child: const PortfolioPage(),
-            ),
+            const PortfolioPage(),
           ],
         ),
       ),

@@ -50,11 +50,19 @@ class _PresentationPageState extends State<PresentationPage> {
                       ? MainAxisAlignment.center
                       : MainAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Image.asset(
-                        AppImages.AVATAR,
-                      ),
-                    ),
+                    ResponsiveEndpoints.isDesktop(size.width)
+                        ? Expanded(
+                            child: Image.asset(
+                              AppImages.AVATAR,
+                              width: 340.0,
+                              height: 340.0,
+                            ),
+                          )
+                        : Image.asset(
+                            AppImages.AVATAR,
+                            width: 340.0,
+                            height: 340.0,
+                          ),
                   ],
                 ),
               ),
@@ -69,7 +77,7 @@ class _PresentationPageState extends State<PresentationPage> {
                         style: Theme.of(context).textTheme.headline1?.copyWith(
                               fontSize: ResponsiveEndpoints.isMobile(size.width)
                                   ? 80
-                                  : 120,
+                                  : 100,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),

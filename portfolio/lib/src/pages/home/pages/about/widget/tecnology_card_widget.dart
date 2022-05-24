@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/src/shared/core/responsive_endpoints.dart';
 
 import 'package:portfolio/src/shared/models/tecnology_model.dart';
 
@@ -16,6 +17,7 @@ class TecnologyCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => onTap(),
       child: Card(
@@ -37,13 +39,20 @@ class TecnologyCardWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset(
-                  tecnology.assetPath,
-                  height: 50.0,
+                Expanded(
+                  child: Padding(
+                    padding: ResponsiveEndpoints.isMobile(size.width)
+                        ? const EdgeInsets.all(16.0)
+                        : const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      tecnology.assetPath,
+                    ),
+                  ),
                 ),
                 Text(
                   tecnology.name,
                   style: Theme.of(context).textTheme.button?.copyWith(
+                      overflow: TextOverflow.ellipsis,
                       color: Theme.of(context).colorScheme.onPrimary),
                 ),
               ],

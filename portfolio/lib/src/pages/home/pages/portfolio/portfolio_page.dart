@@ -3,8 +3,10 @@ import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:portfolio/src/pages/home/pages/portfolio/stores/portfolio_store.dart';
 import 'package:portfolio/src/pages/home/pages/portfolio/widgets/github_card_widget.dart';
+import 'package:portfolio/src/shared/core/responsive_endpoints.dart';
 import 'package:portfolio/src/shared/repositories/github_repository.dart';
 import 'package:portfolio/src/shared/services/http_client_service.dart';
+import 'package:responsive/logic.dart';
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({Key? key}) : super(key: key);
@@ -29,15 +31,21 @@ class _PortfolioPageState extends State<PortfolioPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 64.0),
+    Size size = MediaQuery.of(context).size;
+    return Padding(
+      padding: ResponsiveEndpoints.isDesktop(size.width)
+          ? const EdgeInsets.symmetric(
+              horizontal: 128.0,
+              vertical: 32.0,
+            )
+          : const EdgeInsets.all(32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             '# Projetos',
-            style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.inversePrimary,
+            style: Theme.of(context).textTheme.headline2?.copyWith(
+                  color: Theme.of(context).colorScheme.onSecondary,
                 ),
           ),
           const SizedBox(height: 32.0),
@@ -49,15 +57,34 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     ),
                   )
                 : LayoutGrid(
-                    columnSizes: [1.fr, 1.fr, 1.fr],
-                    rowSizes: const [
-                      auto,
-                      auto,
-                      auto,
-                      auto,
-                    ],
-                    columnGap: 8.0,
-                    rowGap: 8.0,
+                    columnSizes: ResponsiveEndpoints.isMobile(size.width) ||
+                            Responsive.gridSize(size.width) == Responsive.lg
+                        ? [1.fr]
+                        : [1.fr, 1.fr, 1.fr],
+                    rowSizes: ResponsiveEndpoints.isMobile(size.width) ||
+                            Responsive.gridSize(size.width) == Responsive.lg
+                        ? const [
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                          ]
+                        : const [
+                            auto,
+                            auto,
+                            auto,
+                            auto,
+                          ],
+                    columnGap: 32.0,
+                    rowGap: 32.0,
                     gridFit: GridFit.loose,
                     children: controller.repositories != null
                         ? controller.repositories
