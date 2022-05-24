@@ -72,46 +72,83 @@ abstract class _PortfolioStore with Store {
       branchName: branchName,
     );
 
-    asuka.showModalBottomSheet(
-      backgroundColor: Theme.of(pageContext).colorScheme.tertiaryContainer,
-      builder: (context) => Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            color: Theme.of(context).colorScheme.secondary,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  repositoryName,
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondary),
+    asuka.showDialog(
+      barrierColor: Theme.of(pageContext).colorScheme.tertiary,
+      builder: (buildContext) => Dialog(
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Theme.of(pageContext).colorScheme.secondary,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24.0),
+                  topRight: Radius.circular(24.0),
                 ),
-                ElevatedButton(
-                    onPressed: () => goToGithubRepository(repositoryName),
-                    child: const Text('Acessar repositório'))
-              ],
-            ),
-          ),
-          Expanded(
-            child: Markdown(
-              padding: const EdgeInsets.symmetric(
-                vertical: 16.0,
-                horizontal: 64.0,
               ),
-              selectable: true,
-              data: docs,
-              extensionSet: md.ExtensionSet(
-                md.ExtensionSet.gitHubFlavored.blockSyntaxes,
-                [
-                  md.EmojiSyntax(),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    repositoryName,
+                    style: Theme.of(pageContext).textTheme.headline4!.copyWith(
+                          overflow: TextOverflow.ellipsis,
+                          color: Theme.of(pageContext).colorScheme.onSecondary,
+                        ),
+                  ),
+                  IconButton(
+                    onPressed: () => Navigator.pop(buildContext),
+                    icon: Icon(
+                      Icons.close,
+                      color: Theme.of(pageContext).colorScheme.onSecondary,
+                    ),
+                  ),
                 ],
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Stack(
+                children: [
+                  Markdown(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 16.0,
+                      horizontal: 64.0,
+                    ),
+                    selectable: true,
+                    data: docs,
+                    extensionSet: md.ExtensionSet(
+                      md.ExtensionSet.gitHubFlavored.blockSyntaxes,
+                      [md.EmojiSyntax()],
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 20,
+                    right: 20,
+                    child: ElevatedButton(
+                      onPressed: () => goToGithubRepository(repositoryName),
+                      style: ElevatedButton.styleFrom(
+                        onPrimary:
+                            Theme.of(pageContext).colorScheme.tertiaryContainer,
+                        primary: Theme.of(pageContext)
+                            .colorScheme
+                            .onTertiaryContainer,
+                      ),
+                      child: const Text('Acessar repositório'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
+
+    // asuka.showModalBottomSheet(
+    //   enableDrag: true,
+    //   backgroundColor: Theme.of(pageContext).colorScheme.tertiaryContainer,
+    //   builder: (context) => ,
+    // );
   }
 }

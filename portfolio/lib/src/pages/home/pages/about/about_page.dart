@@ -12,18 +12,19 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            children: [
-              Expanded(child: avatarWidget()),
-              Expanded(child: presentationWidget(context)),
-            ],
-          ),
-          const SizedBox(height: 32.0),
-          Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Row(
+          children: [
+            Expanded(child: avatarWidget()),
+            Expanded(child: presentationWidget(context)),
+          ],
+        ),
+        const SizedBox(height: 32.0),
+        Padding(
+          padding: const EdgeInsets.all(128.0),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,9 +32,9 @@ class AboutPage extends StatelessWidget {
               const VerticalDivider(),
               Expanded(child: tecnologyWidget(context)),
             ],
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 
@@ -43,41 +44,39 @@ class AboutPage extends StatelessWidget {
         height: 350.0,
       );
 
-  Widget presentationWidget(BuildContext context) => Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Pedro Henrique',
-              textAlign: TextAlign.left,
-              style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
-            ),
-            const SizedBox(height: 32.0),
-            Text(
-              '“Resolver problemas e automatizar processos por meio da tecnologia são minhas paixões, prazer sou Pedro Henrique, um bom programador”',
-              style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              'Sou estudante de desenvolvimento de softwares e utilizo os conhecimentos adquiridos no meu dia a dia, gosto muito de estudar e repassar os conhecimentos adquiridos para outras pessoas, seja por meio de projetos ou explicando o assunto de uma forma mais simples.',
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              'Atualmente estou gravando vídeos para o YouTube apresentando projetos ou explicando algum assunto em que eu esteja estudando, gosto dessa ideia pela quantidade de vantagens que ela trás como por exemplo, a fixação de conteúdos complexos pois para explicar um assunto eu preciso estudar mais sobre ele.',
-              style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
-            ),
-          ],
-        ),
+  Widget presentationWidget(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Pedro Henrique',
+            textAlign: TextAlign.left,
+            style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
+          ),
+          const SizedBox(height: 32.0),
+          Text(
+            '“Resolver problemas e automatizar processos por meio da tecnologia são minhas paixões, prazer sou Pedro Henrique, um bom programador”',
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+          ),
+          const SizedBox(height: 16.0),
+          Text(
+            'Sou estudante de desenvolvimento de softwares e utilizo os conhecimentos adquiridos no meu dia a dia, gosto muito de estudar e repassar os conhecimentos adquiridos para outras pessoas, seja por meio de projetos ou explicando o assunto de uma forma mais simples.',
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+          ),
+          const SizedBox(height: 16.0),
+          Text(
+            'Atualmente estou gravando vídeos para o YouTube apresentando projetos ou explicando algum assunto em que eu esteja estudando, gosto dessa ideia pela quantidade de vantagens que ela trás como por exemplo, a fixação de conteúdos complexos pois para explicar um assunto eu preciso estudar mais sobre ele.',
+            style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+          ),
+        ],
       );
 
   Widget experienceWidget(BuildContext context) => Column(

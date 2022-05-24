@@ -50,8 +50,13 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     ),
                   )
                 : LayoutGrid(
-                    columnSizes: [1.fr, 1.fr],
-                    rowSizes: const [auto, auto, auto, auto, auto, auto],
+                    columnSizes: [1.fr, 1.fr, 1.fr],
+                    rowSizes: const [
+                      auto,
+                      auto,
+                      auto,
+                      auto,
+                    ],
                     columnGap: 8.0,
                     rowGap: 8.0,
                     gridFit: GridFit.loose,
