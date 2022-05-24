@@ -29,19 +29,18 @@ class _PortfolioPageState extends State<PortfolioPage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(32.0),
+      padding: const EdgeInsets.symmetric(horizontal: 64.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '# Portfólio',
+            '# Projetos',
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   color: Theme.of(context).colorScheme.inversePrimary,
                 ),
           ),
-          const SizedBox(height: 16.0),
+          const SizedBox(height: 32.0),
           Observer(
             builder: (contextBuilder) => controller.loading
                 ? Center(

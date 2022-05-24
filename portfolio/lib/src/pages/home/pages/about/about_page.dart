@@ -18,7 +18,11 @@ class AboutPage extends StatelessWidget {
         Row(
           children: [
             Expanded(child: avatarWidget()),
-            Expanded(child: presentationWidget(context)),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.only(right: 64.0),
+              child: presentationWidget(context),
+            )),
           ],
         ),
         const SizedBox(height: 32.0),
@@ -39,7 +43,7 @@ class AboutPage extends StatelessWidget {
   }
 
   Widget avatarWidget() => Image.asset(
-        AppImages.AVATAR,
+        AppImages.ROCKET,
         width: 350.0,
         height: 350.0,
       );

@@ -22,7 +22,7 @@ dependencies:
   url_launcher: ^6.1.2
   flutter_markdown: ^0.6.10
   flutter_layout_grid: ^2.0.1
-
+  responsive: ^0.3.11+11
 
 
 dev_dependencies:
@@ -40,6 +40,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/animations/
 
 
   # To add custom fonts to your application, add a fonts section here,

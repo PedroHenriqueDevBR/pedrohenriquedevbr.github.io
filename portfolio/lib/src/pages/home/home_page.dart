@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/src/pages/home/pages/about/about_page.dart';
 import 'package:portfolio/src/pages/home/pages/portfolio/portfolio_page.dart';
 import 'package:portfolio/src/pages/home/pages/presentation/presentation_page.dart';
+import 'package:portfolio/src/shared/core/app_images.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,12 +24,39 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.onTertiaryContainer,
       appBar: AppBar(
-        title: const Text('PedroHenriqueDevBR'),
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              AppImages.AVATAR,
+              width: 40.0,
+              height: 40.0,
+            ),
+            const SizedBox(width: 8.0),
+            const Text('PedroHenriqueDevBR'),
+          ],
+        ),
+        actions: [
+          TextButton(
+            child: const Text('Home'),
+            onPressed: () {},
+          ),
+          TextButton(
+            child: const Text('Sobre'),
+            onPressed: () {},
+          ),
+          TextButton(
+            child: const Text('Portfólio'),
+            onPressed: () {},
+          ),
+          const SizedBox(width: 16.0),
+        ],
       ),
       body: SingleChildScrollView(
-        // physics: const PageScrollPhysics(),
+        physics: const RangeMaintainingScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -54,46 +82,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  Widget railMenuWidget() => NavigationRail(
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Column(
-            children: [
-              Image.asset(
-                'assets/images/avatar.png',
-                width: 50,
-                height: 50,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(height: 8.0),
-              const Text(
-                'Pedro',
-              ),
-            ],
-          ),
-        ),
-        selectedIndex: selectedPageIndex,
-        onDestinationSelected: changePage,
-        useIndicator: true,
-        labelType: NavigationRailLabelType.selected,
-        backgroundColor: Theme.of(context).colorScheme.onSecondary,
-        destinations: const [
-          NavigationRailDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: Text('Home'),
-          ),
-          NavigationRailDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: Text('Sobre'),
-          ),
-          NavigationRailDestination(
-            icon: Icon(Icons.coffee_maker_outlined),
-            selectedIcon: Icon(Icons.coffee_maker),
-            label: Text('Portfólio'),
-          ),
-        ],
-      );
 }

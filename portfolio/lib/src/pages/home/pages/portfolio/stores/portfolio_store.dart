@@ -38,6 +38,7 @@ abstract class _PortfolioStore with Store {
     try {
       setLoading(true);
       List<GitHubRepositoryModel> response = await storage.allRepositories();
+      response.removeWhere((element) => element.fork == true);
       response.sort(
         (a, b) {
           return b.stargazersCount!.compareTo(a.stargazersCount!);
