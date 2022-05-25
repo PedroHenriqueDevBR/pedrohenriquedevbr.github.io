@@ -1,256 +1,62 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Pedro Henrique - Portifólio</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="portfolio">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <title>PedroDev</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = '2078613982';
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" id="main-menu">
-    <!-- Logo -->
-    <span href="#" class="navbar-brand">
-      <img src="img/icon.png" alt="" width="30" height="24">
-      <span class="px-2 logo-font-family">Pedro</span>
-    </span>
-
-    <!-- Botão ativa menu -->
-    <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#nav-menu"
-      aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="nav-menu">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="#presentation" class="nav-link text-white">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="#person-description" class="nav-link text-white">Sobre</a>
-        </li>
-        <li class="nav-item">
-          <a href="#projects" class="nav-link text-white">Projetos</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container-presentation">
-    <section class="presentation" id="presentation">
-      <div class="card-presentation shadow bg-white">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 pt-5">
-              <img id="api-photo" src="" width="100%" />
-            </div>
-
-            <div id="about" class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-              <h2>Seja bem vindo ao meu portifólio</h2>
-              <h1 id="api-name" class="text-monospace"></h1>
-              <h3 class="font-weight-bold">
-                Estudante (Instituto Federal do Piauí)
-              </h3>
-              <p id="api-description"></p>
-
-              <!-- Main infos -->
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <p>
-                    <i class="far fa-calendar-alt icon"></i>
-                    18 de Junho de 1998
-                  </p>
-                </li>
-                <li class="list-group-item">
-                  <p>
-                    <i class="fas fa-phone-alt icon"></i>
-                    (86) 98863-9775
-                  </p>
-                </li>
-                <li class="list-group-item">
-                  <p class="text-truncate" style="width: 100% !important;">
-                    <i class="fas fa-envelope icon"></i>
-                    pedro.henrique.particular@gmail.com
-                  </p>
-                </li>
-                <li class="list-group-item">
-                  <p>
-                    <i class="fas fa-map-marker-alt icon"></i>
-                    Teresina Piauí - Brasil
-                  </p>
-                </li>
-              </ul>
-
-              <!-- Social infos -->
-              <ul class="list-group list-group-horizontal social-icons">
-                <li>
-                  <a target="_blank" href="https://github.com/pedrohenriquedevbr">
-                    <i class="fab fa-github icon text-dark"></i>
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://www.linkedin.com/in/pedro-henrique-br/">
-                    <i class="fab fa-linkedin icon text-dark"></i>
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://www.youtube.com/channel/UCsfCR2wETP80000IuMTPYNA">
-                    <i class="fab fa-youtube icon text-dark"></i>
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://www.facebook.com/profile.php?id=100004368814502">
-                    <i class="fab fa-facebook icon text-dark"></i>
-                  </a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://www.instagram.com/pedro_lymma/">
-                    <i class="fab fa-instagram icon text-dark"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <main class="mt-5">
-    <div class="container">
-      <section id="person-description">
-        <h1 class="mb-5">SOBRE MIM</h1>
-        <p>
-          Olá, meu nome é Pedro Henrique, sou aluno do curso, análise e desenvolvimento de sistemas ministrado no
-          Instituto Federal do Piauí (IFPI), tenho 23 anos de idade e estudo programação desde os 17 anos. Iniciei meus
-          estudos na área de programação com HTML, CSS e um pouco de JavaScript, embora HTML e CSS não sejam linguagens
-          de programação, foi o que abriu meus olhos para estudar mais a respeito, foi a porta de entrada para esse
-          mundo tão surpreendente e interessante. Não foi dificil escolher a programação como meio profissional de
-          trabalho, já que eu conseguia desde cedo passar horas e horas desenvolvendo os mais diversos sistemas, desde
-          os sistemas mais simples aos mais complexos.
-        </p>
-        <p>
-          Minhas áreas de interesse principais, são elas, desenvolvimento web (back-end) com Python e desenvolvimento
-          mobile (Android) com Flutter, porém tenho outras skills em outras tecnologias que não são aprofundadas. entre
-          as áreas de interesse que eu mantenho estudando são: desenvolvimento web (front-end) com Angular, Inteligência
-          Artificial, desenvolvimento de games.
-        </p>
-        <p>
-          Tenho experiência na área de TI, atuei no time de service desk de uma grande empresa do estado do Piauí e
-          também como suporte técnico na mesma empresa, atuei também como desenvolvedor de softwares utilizando
-          principalmente a linguagem de programação Python para a criação de scripts para pequenas automatizações na
-          empresa e utilizei o framework Django junto ao Django Rest Framework para a criação de softwares mais
-          complexos.
-        </p>
-        <p>
-          Junto ao desenvolvimento de APIs com Python, desenvolvi também aplicação Android utilizando o framework
-          Flutter, dessa forma a utilização de um serviço se torna mais acessível com as tecnologias mencionadas
-          (Django, Angular e Flutter).
-        </p>
-
-      </section>
-    </div>
-
-    <!-- Listagem de projetos -->
-    <div class="bg-light mt-5 pt-2" id="projects">
-
-      <div class="container">
-        <div class="d-flex justify-content-between">
-          <h1 class="mb-4">Meus projetos</h1>
-
-          <!-- Button for see all projects -->
-          <div class="d-flex align-items-center">
-            <a target="_blank" href="https://github.com/PedroHenriqueDevBR?tab=repositories"
-              class="btn btn-success btn-show-projects">Ver todos</a>
-          </div>
-        </div>
-
-        <div id="projects-cards"></div>
-
-        <!-- Button for see all projects -->
-        <div class="d-flex align-items-center py-3 container-btn-show-projects-aux">
-          <a target="_blank" href="https://github.com/PedroHenriqueDevBR?tab=repositories"
-            class="btn btn-success btn-show-projects-aux">Ver todos</a>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer id="footer" class="bg-dark py-5">
-
-    <div class="logo">
-      <img src="img/pedro.jpg" alt="logo" width="50px">
-      <span class="text-white">Pedro Henrique</sp>
-    </div>
-
-    <div class="site-map">
-      <ul>
-        <li><a href="#presentation">Home</a></li>
-        <li><a href="#person-description">Sobre</a></li>
-        <li><a href="#projects">Projetos</a></li>
-      </ul>
-    </div>
-
-    <div class="social-map">
-      <div class="icon-social-map">
-        <a target="_blank" href="https://github.com/pedrohenriquedevbr">
-          <i class="fab fa-github icon"></i>
-        </a>
-      </div>
-      <div class="icon-social-map">
-        <a target="_blank" href="https://www.linkedin.com/in/pedro-henrique-br/">
-          <i class="fab fa-linkedin icon"></i>
-        </a>
-      </div>
-      <div class="icon-social-map">
-        <a target="_blank" href="https://www.youtube.com/channel/UCsfCR2wETP80000IuMTPYNA">
-          <i class="fab fa-youtube icon"></i>
-        </a>
-      </div>
-      <div class="icon-social-map">
-        <a target="_blank" href="https://www.facebook.com/profile.php?id=100004368814502">
-          <i class="fab fa-facebook icon"></i>
-        </a>
-      </div>
-      <div class="icon-social-map">
-        <a target="_blank" href="https://www.instagram.com/pedro_lymma/">
-          <i class="fab fa-instagram icon"></i>
-        </a>
-      </div>
-    </div>
-
-    <div class="copr text-secondary mt-4">
-      <p>Portifólio desenvolvido por Pedro Henrique</p>
-    </div>
-
-  </footer>
-
-  <div class="modal fade descrition-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
-      <div class="modal-content py-2">
-        <div class="modal-header">
-          <h5 class="modal-title">Descrição</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body px-4" id="modal-content"></div>
-      </div>
-    </div>
-  </div>
-
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/all.min.js"></script> <!-- Importação dos ícones -->
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/marked.min.js"></script>
-  <script src="js/axios.min.js"></script>
-  <script src="js/script.js"></script>
-
+  <script>
+    window.addEventListener('load', function (ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        }
+      }).then(function (engineInitializer) {
+        return engineInitializer.initializeEngine();
+      }).then(function (appRunner) {
+        return appRunner.runApp();
+      });
+    });
+  </script>
 </body>
 
 </html>
