@@ -88,13 +88,16 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     gridFit: GridFit.loose,
                     children: controller.repositories != null
                         ? controller.repositories
-                            .map((element) => GithubCardWidget(
-                                  repository: element,
-                                  onTap: () => controller.showDocumentation(
-                                    element.name!,
-                                    element.defaultBranch!,
-                                  ),
-                                ))
+                            .map(
+                              (element) => GithubCardWidget(
+                                repository: element,
+                                onTap: () => controller.showDocumentation(
+                                  element.name!,
+                                  element.defaultBranch!,
+                                  size.width,
+                                ),
+                              ),
+                            )
                             .toList()
                         : [],
                   ),

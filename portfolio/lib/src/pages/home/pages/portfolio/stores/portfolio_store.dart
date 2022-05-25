@@ -4,6 +4,7 @@ import 'package:markdown/markdown.dart' as md;
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:mobx/mobx.dart';
 import 'package:asuka/asuka.dart' as asuka;
+import 'package:portfolio/src/shared/core/responsive_endpoints.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../../../shared/interfaces/github_storage_interface.dart';
@@ -67,7 +68,8 @@ abstract class _PortfolioStore with Store {
     launchUrlString('https://github.com/pedrohenriquedevbr/$repositoryName');
   }
 
-  void showDocumentation(String repositoryName, String branchName) async {
+  void showDocumentation(
+      String repositoryName, String branchName, double width) async {
     String docs = await storage.repositoryDocs(
       repositoryName: repositoryName,
       branchName: branchName,
@@ -93,7 +95,7 @@ abstract class _PortfolioStore with Store {
                 children: [
                   Text(
                     repositoryName,
-                    style: Theme.of(pageContext).textTheme.headline4!.copyWith(
+                    style: Theme.of(pageContext).textTheme.headline6!.copyWith(
                           overflow: TextOverflow.ellipsis,
                           color: Theme.of(pageContext).colorScheme.onSecondary,
                         ),
@@ -112,10 +114,12 @@ abstract class _PortfolioStore with Store {
               child: Stack(
                 children: [
                   Markdown(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 16.0,
-                      horizontal: 64.0,
-                    ),
+                    padding: ResponsiveEndpoints.isMobile(width)
+                        ? const EdgeInsets.all(16.0)
+                        : const EdgeInsets.symmetric(
+                            vertical: 16.0,
+                            horizontal: 64.0,
+                          ),
                     selectable: true,
                     data: docs,
                     extensionSet: md.ExtensionSet(
