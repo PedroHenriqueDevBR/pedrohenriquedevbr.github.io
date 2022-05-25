@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/src/pages/home/pages/about/about_page.dart';
+import 'package:portfolio/src/pages/home/pages/footer/footer_page.dart';
 import 'package:portfolio/src/pages/home/pages/portfolio/portfolio_page.dart';
 import 'package:portfolio/src/pages/home/pages/presentation/presentation_page.dart';
 import 'package:portfolio/src/shared/core/app_images.dart';
 import 'package:responsive/logic.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -38,21 +41,28 @@ class _HomePageState extends State<HomePage> {
               height: 40.0,
             ),
             const SizedBox(width: 8.0),
-            const Text('PedroHenriqueDevBR'),
+            const Text('PedroDev'),
           ],
         ),
+        backgroundColor: Theme.of(context).colorScheme.onTertiaryContainer,
+        foregroundColor: Theme.of(context).colorScheme.primaryContainer,
         actions: [
-          TextButton(
-            child: const Text('Home'),
-            onPressed: () {},
+          IconButton(
+            onPressed: (() => launchUrlString(
+                'https://www.linkedin.com/in/pedro-henrique-br/')),
+            icon: Icon(
+              FontAwesomeIcons.linkedinIn,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
-          TextButton(
-            child: const Text('Sobre'),
-            onPressed: () {},
-          ),
-          TextButton(
-            child: const Text('Portfólio'),
-            onPressed: () {},
+          const SizedBox(width: 16.0),
+          IconButton(
+            onPressed: (() =>
+                launchUrlString('https://github.com/pedrohenriquedevbr')),
+            icon: Icon(
+              FontAwesomeIcons.github,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
           const SizedBox(width: 16.0),
         ],
@@ -74,6 +84,7 @@ class _HomePageState extends State<HomePage> {
               child: AboutPage(),
             ),
             const PortfolioPage(),
+            const FooterPage(),
           ],
         ),
       ),

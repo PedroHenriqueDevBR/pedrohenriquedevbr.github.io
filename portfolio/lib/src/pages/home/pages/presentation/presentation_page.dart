@@ -24,39 +24,64 @@ class _PresentationPageState extends State<PresentationPage> {
           ResponsiveRow(
             alignment: WrapAlignment.center,
             columnsCount: 12,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               ResponsiveEndpoints.isDesktop(size.width)
                   ? FlexWidget(
+                      xs: 12,
                       sm: 12,
                       md: 12,
                       lg: 6,
-                      child: Text(
-                        'Eu\nSou\nPedro',
-                        textAlign: TextAlign.right,
-                        style: Theme.of(context).textTheme.headline1?.copyWith(
-                              fontSize: size.width <= Responsive.md ? 60 : 100,
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
+                      xl: 6,
+                      xxl: 6,
+                      xxxl: 6,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            '<Pedro\nDev />',
+                            textAlign: TextAlign.right,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1
+                                ?.copyWith(
+                                  fontSize:
+                                      size.width <= Responsive.md ? 60 : 80,
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                ),
+                          ),
+                        ],
                       ),
                     )
                   : Container(),
               FlexWidget(
+                xs: 12,
                 sm: 12,
                 md: 12,
                 lg: 6,
+                xl: 6,
+                xxl: 6,
+                xxxl: 6,
                 child: Row(
+                  mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: ResponsiveEndpoints.isMobile(size.width)
                       ? MainAxisAlignment.center
                       : MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ResponsiveEndpoints.isDesktop(size.width)
-                        ? Expanded(
-                            child: Image.asset(
-                              AppImages.AVATAR,
-                              width: 340.0,
-                              height: 340.0,
-                            ),
+                        ? Wrap(
+                            children: [
+                              Image.asset(
+                                AppImages.AVATAR,
+                                width: 340.0,
+                                height: 340.0,
+                              ),
+                            ],
                           )
                         : Image.asset(
                             AppImages.AVATAR,
@@ -68,15 +93,19 @@ class _PresentationPageState extends State<PresentationPage> {
               ),
               ResponsiveEndpoints.isMobile(size.width)
                   ? FlexWidget(
+                      xs: 12,
                       sm: 12,
                       md: 12,
                       lg: 6,
+                      xl: 6,
+                      xxl: 6,
+                      xxxl: 6,
                       child: Text(
-                        'Eu sou Pedro',
+                        '<PedroDev />',
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.headline1?.copyWith(
                               fontSize: ResponsiveEndpoints.isMobile(size.width)
-                                  ? 80
+                                  ? 40
                                   : 100,
                               fontWeight: FontWeight.bold,
                               color: Theme.of(context).colorScheme.onPrimary,
