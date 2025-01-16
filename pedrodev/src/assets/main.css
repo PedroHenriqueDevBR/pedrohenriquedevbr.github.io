@@ -1,0 +1,17 @@
+@import './base.css';
+
+.primary-color {
+  background-color: var(--primary-color);
+}
+
+.secondary-color {
+  background-color: var(--secondary-color);
+}
+
+.primary-color-text {
+  color: var(--primary-color);
+}
+
+.secondary-color-text {
+  color: var(--secondary-color);
+}
