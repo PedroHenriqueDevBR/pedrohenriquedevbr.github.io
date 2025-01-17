@@ -15,3 +15,15 @@
 .secondary-color-text {
   color: var(--secondary-color);
 }
+
+.text-primary {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.divider {
+  width: 50px;
+  margin: 8px 0;
+  border-radius: 4px;
+  border: 1.5px solid var(--color-background-soft);
+}

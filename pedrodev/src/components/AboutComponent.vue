@@ -3,16 +3,27 @@
         <h1 class="primary-color-text">Sobre</h1>
         <div class="description">
             <div class="vertical-divider primary-color"></div>
-            <div>
+            <div class="details">
                 <p>
-                    Sou desenvolvedor de software com experiência na área e apto para resolver problemas relacionados à
-                    tecnologias
+                    Sou <span class="text-primary">Desenvolvedor de Software</span>, especializado em backend com
+                    foco em <span class="text-primary">Python</span>, utilizando frameworks como <span
+                        class="text-primary">Django</span> e <span class="text-primary">Flask</span> para
+                    construir soluções robustas e escaláveis. Também possuo experiência em desenvolvimento frontend, com
+                    conhecimentos em <span class="text-primary">JavaScript</span>, <span
+                        class="text-primary">HTML</span>, <span class="text-primary">CSS</span> e frameworks como <span
+                        class="text-primary">VueJS</span>. Tenho conhecimento no desenvolvimento de aplicações mobile
+                    com <span class="text-primary">FLutter</span>, embora esse não seja meu foco de trabalho.
                 </p>
+                <hr class="divider">
 
-                <p>Sou estudante de desenvolvimento de softwares e utilizo os conhecimentos adquiridos no meu dia a dia,
-                    gosto muito de estudar e repassar os conhecimentos adquiridos para outras pessoas, seja por meio de
-                    projetos ou explicando o assunto de uma forma mais simples.</p>
-
+                <p>
+                    Tenho experiência no desenvolvimento de APIs RESTful, gerenciamento de bancos de dados (relacionais
+                    e não-relacionais) e deploy de sistemas no sistema operacional <span
+                        class="text-primary">Linux</span>. Trabalho com metodologias ágeis e utilizo ferramentas como
+                    <span class="text-primary">Docker</span>, <span class="text-primary">Git</span> e monitoramento
+                    de aplicações. Sou apaixonado por resolver problemas complexos, otimizar processos e contribuir para
+                    o sucesso de projetos.
+                </p>
             </div>
         </div>
     </div>
@@ -24,38 +35,45 @@
                 <img src="@/assets/images/python.png" alt="Python">
                 <span>Python</span>
             </div>
-
-            <div class="card">
-                <img src="@/assets/images/css.png" alt="css">
-                <span>CSS</span>
-            </div>
             <div class="card">
                 <img src="@/assets/images/flutter.png" alt="flutter">
                 <span>Flutter</span>
-            </div>
-            <div class="card">
-                <img src="@/assets/images/git.png" alt="git">
-                <span>Git</span>
-            </div>
-            <div class="card">
-                <img src="@/assets/images/html.png" alt="html">
-                <span>HTML</span>
             </div>
             <div class="card">
                 <img src="@/assets/images/javascript.png" alt="javascript">
                 <span>JavaScript</span>
             </div>
             <div class="card">
-                <img src="@/assets/images/linux.png" alt="linux">
-                <span>Linux</span>
+                <img src="@/assets/images/vue.png" alt="vue">
+                <span>VueJS</span>
+            </div>
+            <div class="card">
+                <img src="@/assets/images/html.png" alt="html">
+                <span>HTML</span>
+            </div>
+            <div class="card">
+                <img src="@/assets/images/css.png" alt="css">
+                <span>CSS</span>
+            </div>
+            <div class="card">
+                <img src="@/assets/images/postgresql.png" alt="postgresql">
+                <span>PostgreSQL</span>
             </div>
             <div class="card">
                 <img src="@/assets/images/mysql.png" alt="mysql">
                 <span>MySQL</span>
             </div>
             <div class="card">
-                <img src="@/assets/images/postgresql.png" alt="postgresql">
-                <span>PostgreSQL</span>
+                <img src="@/assets/images/linux.png" alt="linux">
+                <span>Linux</span>
+            </div>
+            <div class="card">
+                <img src="@/assets/images/docker.png" alt="docker">
+                <span>Docker</span>
+            </div>
+            <div class="card">
+                <img src="@/assets/images/git.png" alt="git">
+                <span>Git</span>
             </div>
         </div>
 
@@ -71,6 +89,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    padding: 16px;
 }
 
 .container h1 {
@@ -88,14 +107,14 @@
 }
 
 .vertical-divider {
-    width: 10px;
+    width: 15px;
     border-radius: 16px;
-    height: auto;
+    height: 40px;
     margin: 0 16px;
 }
 
 .mt-md {
-    margin-top: 32px;
+    margin-top: 8px;
 }
 
 .container.text-center {
@@ -139,5 +158,46 @@
     margin-top: 16px;
     font-weight: 600;
     font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 700px) {
+    .container {
+        width: 100% !important;
+    }
+
+    .container h1 {
+        font-size: 1.5rem;
+    }
+
+    .description p {
+        font-size: 0.8rem;
+    }
+
+    .vertical-divider {
+        width: 30px;
+        border-radius: 16px;
+        height: 40px;
+        margin: 0 16px;
+    }
+
+    .skills .card {
+        width: 120px;
+        height: 120px;
+        margin: 8px;
+    }
+
+    .skills .card:hover {
+        background-color: var(--color-background-muted);
+    }
+
+    .skills .card img {
+        width: 50px;
+    }
+
+    .skills .card span {
+        margin-top: 8px;
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
 }
 </style>

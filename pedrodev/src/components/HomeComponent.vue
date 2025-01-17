@@ -81,6 +81,7 @@ main {
         flex-direction: column-reverse;
         width: 100%;
         height: fit-content;
+        justify-content: flex-end;
     }
 
     .description {
@@ -98,13 +99,13 @@ main {
         font-size: 1.2rem;
         text-align: center;
         line-height: 0 !important;
-
     }
 
     .description p {
         font-weight: 400;
         font-size: 0.8rem;
         text-align: center;
+        line-height: 1.3rem;
     }
 
     .name {
@@ -121,7 +122,7 @@ main {
         border-radius: 6px;
         font-weight: 600;
         color: var(--primary-color);
-        margin-top: 32px;
+        margin-top: 16px;
         font-size: 0.8rem;
     }
 
@@ -161,6 +162,7 @@ main {
         font-weight: 400;
         font-size: 0.8rem;
         text-align: center;
+        line-height: normal;
     }
 
     .name {
