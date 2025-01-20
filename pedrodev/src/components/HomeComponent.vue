@@ -172,10 +172,12 @@ main {
 .mail-box .flex span {
     margin-right: 8px;
     color: inherit;
+    font-size: 0.9rem;
 }
 
 .mail-box p {
     text-align: center;
+    font-size: 0.8rem;
 }
 
 @media only screen and (max-width: 700px) {
