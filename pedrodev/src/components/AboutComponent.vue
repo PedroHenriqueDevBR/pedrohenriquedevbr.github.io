@@ -12,15 +12,17 @@
                     conhecimentos em <span class="text-primary">JavaScript</span>, <span
                         class="text-primary">HTML</span>, <span class="text-primary">CSS</span> e frameworks como <span
                         class="text-primary">VueJS</span>. Tenho conhecimento no desenvolvimento de aplicações mobile
-                    com <span class="text-primary">FLutter</span>, embora esse não seja meu foco de trabalho.
+                    com <span class="text-primary">Flutter</span>, embora esse não seja meu foco de trabalho.
                 </p>
                 <hr class="divider">
 
                 <p>
                     Tenho experiência no desenvolvimento de APIs RESTful, gerenciamento de bancos de dados (relacionais
-                    e não-relacionais) e deploy de sistemas no sistema operacional <span
-                        class="text-primary">Linux</span>. Trabalho com metodologias ágeis e utilizo ferramentas como
-                    <span class="text-primary">Docker</span>, <span class="text-primary">Git</span> e monitoramento
+                    e não-relacionais) e deploy de sistemas, utilizo o <span class="text-primary">Linux</span> para o
+                    processo de deploy das aplicações. Utilizo
+                    ferramentas como
+                    <span class="text-primary">Docker</span>, <span class="text-primary">Git</span> e sistemas
+                    relacionados para o processo de monitoramento
                     de aplicações. Sou apaixonado por resolver problemas complexos, otimizar processos e contribuir para
                     o sucesso de projetos.
                 </p>

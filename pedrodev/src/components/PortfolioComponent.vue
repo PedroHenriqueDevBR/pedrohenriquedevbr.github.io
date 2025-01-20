@@ -1,29 +1,30 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import GithubRepository from '@/repositories/GithubRepository'
+import GithubProjectDetails from '@/components/GithubProjectDetails.vue'
+import type GithubProject from '@/models/GithubProject';
 
-const endpoints = {
-  repos: "https://api.github.com/users/pedrohenriquedevbr/repos",
-  raw:
-    "https://raw.githubusercontent.com/PedroHenriqueDevBR/##/master/README.md"
-};
-
-const githubRepositories = ref([]);
+const repository = new GithubRepository();
+const githubRepositories = ref<GithubProject[]>([]);
+const repositoryDetails = ref<string>('');
+const loading = ref(false);
 
 async function getRespositoryes() {
-  const response = await fetch(endpoints.repos);
-  const repositories = await response.json();
-  console.log(repositories[0])
-  repositories.sort(function (a, b) {
-    if (a.updated_at < b.updated_at) {
-      return 1;
-    }
-    if (a.updated_at > b.updated_at) {
-      return -1;
-    }
-    return 0;
-  });
+  loading.value = true;
+  const repositories = await repository.fetchProjects();
   githubRepositories.value.length = 0
   githubRepositories.value = repositories
+  loading.value = false;
+}
+
+async function getRepositoryDetails(name: string) {
+  repositoryDetails.value = '';
+  const details = await repository.fetchRaw(name);
+  repositoryDetails.value = details;
+}
+
+function closeRepositoryDetails() {
+  repositoryDetails.value = '';
 }
 
 getRespositoryes();
@@ -37,14 +38,27 @@ getRespositoryes();
     <h2>Projetos Github</h2>
     <hr class="divider">
 
-    <div id="github-card-deck">
+    <div class="loading" v-if="loading">
+      <font-awesome-icon :icon="['fas', 'spinner']" />
+    </div>
 
-      <div class="github-card" v-for="repository in githubRepositories">
-        <p class="language">{{ repository.language }}</p>
-        <h2 class="repo-name">{{ repository.name }}</h2>
-        <p class="repo-description">{{ repository.description }}</p>
+    <div id="github">
+      <div id="github-card-deck" v-if="!loading && !repositoryDetails">
+        <div class="github-card" :key="repository.name" v-for="repository in githubRepositories"
+          @click="getRepositoryDetails(repository.name)">
+          <p class="language">{{ repository.language }}</p>
+          <h2 class="repo-name">{{ repository.name }}</h2>
+          <p class="repo-description">{{ repository.description }}</p>
+        </div>
       </div>
 
+      <div id="github-details" v-if="repositoryDetails">
+        <div class="header">
+          <h1>Detalhes do projeto</h1>
+          <font-awesome-icon class="btn-close" @click="closeRepositoryDetails" :icon="['fas', 'xmark']" />
+        </div>
+        <GithubProjectDetails class="repository-details" :content="repositoryDetails" v-if="repositoryDetails" />
+      </div>
     </div>
   </main>
 </template>
@@ -64,6 +78,12 @@ main h2 {
   text-align: left;
 }
 
+#github {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 #github-card-deck {
   width: 100%;
   display: flex;
@@ -78,6 +98,7 @@ main h2 {
   width: 300px;
   margin: 16px;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .language {
@@ -97,7 +118,41 @@ main h2 {
   word-break: break-word;
 }
 
+.btn-close {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .repo-description {
   font-weight: 300;
+}
+
+#github-details {
+  margin-top: 16px;
+}
+
+#github-details .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-background-soft);
+  padding: 16px 32px;
+  margin-bottom: 16px;
+}
+
+
+.loading {
+  font-size: 3rem;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

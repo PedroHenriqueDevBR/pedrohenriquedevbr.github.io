@@ -1,16 +1,31 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
 
     <main>
         <div class="description">
-            <h2>Oi, sou <span class="name">Pedro Henrique</span></h2>
+            <h2>Oi, sou <span class="name">Pedro</span></h2>
             <p>Desenvolvedor de software pleno - Backend | Python | Frontend | VueJS | Docker | PostgreSQL e mais...</p>
-            <button class="btn-outline">Entrar em contato</button>
         </div>
 
         <div class="image-container">
             <img src="@/assets/images/pedro.png" alt="Pedro Henrique">
         </div>
     </main>
+
+    <div class="social-container">
+        <div class="social-item">
+            <font-awesome-icon :icon="['fab', 'github']" />
+        </div>
+        <div class="social-item">
+            <font-awesome-icon :icon="['fab', 'linkedin']" />
+        </div>
+        <div class="social-item">
+            <font-awesome-icon :icon="['far', 'envelope']" />
+        </div>
+    </div>
 
 </template>
 
@@ -76,6 +91,24 @@ main {
     mix-blend-mode: luminosity;
 }
 
+.social {
+    color: #fff;
+}
+
+.social-container {
+    position: absolute;
+    top: 20%;
+    right: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.social-item {
+    font-size: 1.8rem;
+    margin: 8px;
+}
+
 @media only screen and (max-width: 700px) {
     main {
         flex-direction: column-reverse;
@@ -110,7 +143,7 @@ main {
 
     .name {
         color: var(--primary-color);
-        font-size: 2rem;
+        font-size: 1.6rem;
         font-weight: 500;
         line-height: 0 !important;
     }
@@ -132,6 +165,16 @@ main {
 
     .image-container img {
         object-fit: cover;
+    }
+
+    .social-container {
+        top: 18%;
+        left: 20%;
+    }
+
+    .social-item {
+        font-size: 1.2rem;
+        margin: 8px;
     }
 }
 
@@ -188,6 +231,16 @@ main {
 
     .image-container img {
         object-fit: contain;
+    }
+
+    .social-container {
+        top: 30%;
+        left: 30%;
+    }
+
+    .social-item {
+        font-size: 1.5rem;
+        margin: 8px;
     }
 }
 </style>
