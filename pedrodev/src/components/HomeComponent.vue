@@ -1,5 +1,19 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+const showMail = ref(false);
+const closeMailBox = ref(true);
+const mailHasCopy = ref(false)
 
+function toggleShowMail() {
+    if (closeMailBox.value) { showMail.value = !showMail.value; mailHasCopy.value = false; }
+    closeMailBox.value = true
+}
+
+function copyMail() {
+    closeMailBox.value = false
+    navigator.clipboard.writeText('pedro.henrique.particular@gmail.com');
+    mailHasCopy.value = true
+}
 </script>
 
 <template>
@@ -7,7 +21,7 @@
     <main>
         <div class="description">
             <h2>Oi, sou <span class="name">Pedro</span></h2>
-            <p>Desenvolvedor de software pleno - Backend | Python | Frontend | VueJS | Docker | PostgreSQL e mais...</p>
+            <p>Desenvolvedor de software pleno <br> Python | VueJS | TypeScript | Docker | PostgreSQL | Linux</p>
         </div>
 
         <div class="image-container">
@@ -17,13 +31,26 @@
 
     <div class="social-container">
         <div class="social-item">
-            <font-awesome-icon :icon="['fab', 'github']" />
+            <a target="_blank" href="https://github.com/PedroHenriqueDevBR/"><font-awesome-icon
+                    :icon="['fab', 'github']" /></a>
         </div>
         <div class="social-item">
-            <font-awesome-icon :icon="['fab', 'linkedin']" />
+            <a target="_blank" href="https://www.linkedin.com/in/pedro-henrique-br/"><font-awesome-icon
+                    :icon="['fab', 'linkedin']" /></a>
         </div>
-        <div class="social-item">
+        <div class="social-item" @click="toggleShowMail">
             <font-awesome-icon :icon="['far', 'envelope']" />
+        </div>
+    </div>
+
+    <div class="mail-container" v-if="showMail" @click="toggleShowMail">
+        <div class="mail-box">
+            <div class="flex" @click="copyMail">
+                <span>pedro.henrique.particular@gmail.com</span>
+                <font-awesome-icon :icon="['far', 'copy']" />
+            </div>
+            <p v-if="mailHasCopy">E-mail copiado</p>
+
         </div>
     </div>
 
@@ -107,6 +134,48 @@ main {
 .social-item {
     font-size: 1.8rem;
     margin: 8px;
+}
+
+.mail-container {
+    z-index: 1000;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mail-box {
+    z-index: 1001;
+    background-color: var(--color-background);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.mail-box .flex {
+    font-weight: 500;
+    font-size: 1.5rem;
+    cursor: copy;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mail-box .flex * {
+    color: var(--primary-color);
+}
+
+.mail-box .flex span {
+    margin-right: 8px;
+    color: inherit;
+}
+
+.mail-box p {
+    text-align: center;
 }
 
 @media only screen and (max-width: 700px) {

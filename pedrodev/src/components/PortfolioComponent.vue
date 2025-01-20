@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import GithubRepository from '@/repositories/GithubRepository'
-import GithubProjectDetails from '@/components/GithubProjectDetails.vue'
 import type GithubProject from '@/models/GithubProject';
 
 const repository = new GithubRepository();
 const githubRepositories = ref<GithubProject[]>([]);
-const repositoryDetails = ref<string>('');
 const loading = ref(false);
 
 async function getRespositoryes() {
@@ -15,16 +13,6 @@ async function getRespositoryes() {
   githubRepositories.value.length = 0
   githubRepositories.value = repositories
   loading.value = false;
-}
-
-async function getRepositoryDetails(name: string) {
-  repositoryDetails.value = '';
-  const details = await repository.fetchRaw(name);
-  repositoryDetails.value = details;
-}
-
-function closeRepositoryDetails() {
-  repositoryDetails.value = '';
 }
 
 getRespositoryes();
@@ -42,22 +30,23 @@ getRespositoryes();
       <font-awesome-icon :icon="['fas', 'spinner']" />
     </div>
 
-    <div id="github">
-      <div id="github-card-deck" v-if="!loading && !repositoryDetails">
-        <div class="github-card" :key="repository.name" v-for="repository in githubRepositories"
-          @click="getRepositoryDetails(repository.name)">
-          <p class="language">{{ repository.language }}</p>
-          <h2 class="repo-name">{{ repository.name }}</h2>
-          <p class="repo-description">{{ repository.description }}</p>
+    <div id="github-card-deck" v-if="!loading">
+      <div class="github-card" :key="repository.name" v-for="repository in githubRepositories">
+        <div class="card-header">
+          <p class="language">{{ repository.language || 'Docs' }}</p>
+          <span><font-awesome-icon :icon="['fas', 'star']" /> {{ repository.startCount
+            }}</span>
         </div>
-      </div>
-
-      <div id="github-details" v-if="repositoryDetails">
-        <div class="header">
-          <h1>Detalhes do projeto</h1>
-          <font-awesome-icon class="btn-close" @click="closeRepositoryDetails" :icon="['fas', 'xmark']" />
-        </div>
-        <GithubProjectDetails class="repository-details" :content="repositoryDetails" v-if="repositoryDetails" />
+        <a target="_blank" :href="repository.htmlUrl">
+          <h2 class="repo-name">
+            {{ repository.name }}
+          </h2>
+        </a>
+        <a target="_blank" :href="repository.htmlUrl">
+          <p class="repo-description">
+            {{ repository.description }}
+          </p>
+        </a>
       </div>
     </div>
   </main>
@@ -66,7 +55,7 @@ getRespositoryes();
 <style scoped>
 main {
   padding: 16px;
-  width: 1200px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,21 +63,20 @@ main {
   margin: 0 auto;
 }
 
-main h2 {
-  text-align: left;
+a {
+  text-decoration: none;
 }
 
-#github {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+main h2 {
+  text-align: left;
 }
 
 #github-card-deck {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   margin-top: 16px;
 }
 
@@ -99,6 +87,11 @@ main h2 {
   margin: 16px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .language {
@@ -127,20 +120,6 @@ main h2 {
   font-weight: 300;
 }
 
-#github-details {
-  margin-top: 16px;
-}
-
-#github-details .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-background-soft);
-  padding: 16px 32px;
-  margin-bottom: 16px;
-}
-
-
 .loading {
   font-size: 3rem;
   animation: spin 1.5s linear infinite;
@@ -153,6 +132,30 @@ main h2 {
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .github-card {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid var(--color-background-soft);
+    width: 100%;
+    margin: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .language {
+    font-size: 0.6rem;
+  }
+
+  .repo-name {
+    font-size: 1rem;
+  }
+
+  .repo-description {
+    font-size: 0.9rem;
   }
 }
 </style>

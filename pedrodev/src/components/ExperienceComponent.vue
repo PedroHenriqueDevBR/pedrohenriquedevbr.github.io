@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1 class="primary-color-text">Experiências</h1>
-    <hr class="divider">
 
     <div class="timeline">
       <div class="timeline-item">
@@ -82,11 +81,12 @@
 .timeline::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 16px;
   left: 20px;
   width: 4px;
-  height: 96%;
+  height: 94%;
   background-color: var(--primary-color);
+  border-radius: 8px;
 }
 
 .timeline-item {
@@ -130,14 +130,33 @@
   color: var(--color-on-background);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .timeline::before {
     left: 10px;
+    height: 97.5%;
   }
 
   .timeline-content {
     width: 75vw;
+  }
+
+  .timeline-item {
+    padding-left: 40px;
+  }
+
+  .timeline-item::before {
+    left: 4px;
+  }
+}
+
+@media (min-width: 701px) {
+  .timeline::before {
+    left: 10px;
+    height: 96%;
+  }
+
+  .timeline-content {
+    width: 100%;
   }
 
   .timeline-item {

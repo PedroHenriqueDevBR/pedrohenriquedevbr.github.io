@@ -4,7 +4,9 @@ import { RouterLink } from 'vue-router'
 
 <template>
     <header>
-        <h1 class="logo agbalumo">PedroCast</h1>
+        <RouterLink class="remove-decoration" to="/">
+            <h1 class="logo agbalumo">PedroCast</h1>
+        </RouterLink>
         <nav>
             <RouterLink class="nav-item" to="/">Inicio</RouterLink>
             <RouterLink class="nav-item" to="/sobre">Sobre</RouterLink>
@@ -35,6 +37,10 @@ header {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
+}
+
+.remove-decoration {
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 1000px) {

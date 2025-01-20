@@ -15,15 +15,16 @@ export default class GithubRepository {
         const response = await fetch(this.endpoints.repositories);
         const repositories = await response.json();
         repositories.sort((a: Record<string, string>, b: Record<string, string>) => {
-            if (a.updated_at < b.updated_at) {
+            if (a.stargazers_count < b.stargazers_count) {
                 return 1;
             }
-            if (a.updated_at > b.updated_at) {
+            if (a.stargazers_count > b.stargazers_count) {
                 return -1;
             }
             return 0;
         });
-        return repositories;
+        const projects = GithubProject.fromJson(repositories)
+        return projects;
     }
 
     public async fetchRaw(repositoryName: string): Promise<string> {
