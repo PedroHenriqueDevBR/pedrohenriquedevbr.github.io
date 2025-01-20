@@ -1,0 +1,55 @@
+@import './base.css';
+
+.primary-color {
+  background-color: var(--primary-color);
+}
+
+.secondary-color {
+  background-color: var(--secondary-color);
+}
+
+.primary-color-text {
+  color: var(--primary-color);
+}
+
+.secondary-color-text {
+  color: var(--secondary-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.divider {
+  width: 50px;
+  margin: 8px 0;
+  border-radius: 4px;
+  border: 1.5px solid var(--color-background-soft);
+}
+
+.container {
+  margin: 0 auto;
+  width: 1000px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px;
+}
+
+.container h1 {
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    width: 100% !important;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+}

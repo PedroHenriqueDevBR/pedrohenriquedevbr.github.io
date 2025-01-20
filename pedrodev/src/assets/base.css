@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --color-background: #212529;
+  --color-background-soft: #353535;
+  --color-background-mute: #252422;
+
+  --color-on-background: #dee2e6;
+
+  --primary-color: #ff9f1c;
+  --secondary-color: #ffc107;
+
+  --color-border: #546e7a;
+  --color-border-hover: #37474f;
+
+  --color-heading: #fff;
+  --color-text: #eceff1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: 400;
+  color: var(--color-on-background);
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: "Montserrat", serif;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.agbalumo {
+  font-family: "Agbalumo", serif;
+  font-weight: 400;
+  font-style: normal;
+}
