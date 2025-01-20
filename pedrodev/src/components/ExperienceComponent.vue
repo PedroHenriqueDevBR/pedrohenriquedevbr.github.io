@@ -1,28 +1,70 @@
 <template>
   <div class="container">
-    <h1>Experiências</h1>
+    <h1 class="primary-color-text">Experiências</h1>
     <hr class="divider">
 
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-content">
-          <h3>Software Developer</h3>
-          <p>Company XYZ (2020 - Present)</p>
-          <p>Developed web applications using modern JavaScript frameworks like Vue.js and React.</p>
+          <h3>Desenvolvedor de software - Pleno</h3>
+          <p>Defensoria Pública do Estado do Piauí · (mar de 2023 - momento)</p>
+          <p>Na Defensoria Pública do Estado do Piauí eu trabalho no setor de desenvolvimento, realizando principalmente
+            as seguintes rotinas:</p>
+          <li>Criação e manutenção de softwares;</li>
+          <li>Realização de testes unitários e de integração;</li>
+          <li>Configuração e gerenciamento das configurações dos servidores das aplicações. Na Defensoria Pública do
+            Estado do Piauí eu trabalho no setor de desenvolvimento, realizando principalmente as seguintes rotinas: -
+            Criação e manutenção de softwares; - Realização de testes unitários e de integração; - Configuração e
+            gerenciamento das configurações dos servidores das aplicações.</li>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
-          <h3>Junior Developer</h3>
-          <p>Company ABC (2018 - 2020)</p>
-          <p>Assisted in the development of e-commerce platforms and maintained legacy systems.</p>
+          <h3>Desenvolvedor de software - Júnior</h3>
+          <p>Defensoria Pública do Estado do Piauí · (dez de 2021 - mar de 2023)</p>
+          <p>Na Defensoria Pública do Estado do Piauí eu trabalho no setor desenvolvimento realizando principalmente as
+            seguintes rotinas:</p>
+          <li>Criação e manutenção de softwares;</li>
+          <li>Realização de testes unitários e de integração;</li>
+          <li>Configuração e gerenciamento das configurações dos servidores das aplicações.</li>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-content">
-          <h3>Intern</h3>
-          <p>Startup 123 (2017 - 2018)</p>
-          <p>Learned the basics of web development and contributed to small projects.</p>
+          <h3>Desenvolvedor de software - temporário</h3>
+          <p>Defensoria Pública do Estado do Piauí · (out de 2021 - nov de 2021)</p>
+          <p>Na defensoria atuei de forma temporária do começo ao final do mês de Outubro de 2021, auxiliei no
+            desenvolvimento de sistemas internos utilizando a linguagem de programação Python.
+          </p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Estagiário de TI</h3>
+          <p>Grupo Vanguarda · Estágio · (abr de 2019 - mar de 2021)</p>
+          <p>No Grupo Vanguarda atuei como estagiário de Service Desk, abaixo a apresentação das atividades do meu dia a
+            dia:</p>
+          <ul>
+            <li>Recebimento de ordens de serviços por meio de um sistema próprio para isso, por meio de ligação
+              telefônica e e-mail;</li>
+            <li>Análise e solução das ordens de serviços;</li>
+            <li>Conexão remota por meio do VNC e TeamViwer;</li>
+            <li>Configuração remota de estações trabalho e PDVs.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h3>Estagiário - ensino médio</h3>
+          <p>Med Imagem · Estágio · (mar de 2015 - dez de 2016)</p>
+          <p>No Grupo Medi Imagem atuei como estagiário nível médio no setor de autorização, Abaixo a apresentação das
+            principais atividades:</p>
+          <ul>
+            <li>Recolhimento e organização de prontuários médicos;</li>
+            <li>Recebimento das solicitações de procedimentos cirúrgicos ou medicamentos por parte dos médicos;</li>
+            <li>Comunicação com os convênios médicos vinculados para informar sobre as solicitações médicas;</li>
+            <li>Feedback constante com o grupo de enfermagem, tendo como principal informação a autorização de</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -43,7 +85,7 @@
   top: 0;
   left: 20px;
   width: 4px;
-  height: 90%;
+  height: 96%;
   background-color: var(--primary-color);
 }
 
