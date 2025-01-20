@@ -84,22 +84,6 @@
 </template>
 
 <style scoped>
-.container {
-    margin: 0 auto;
-    width: 1000px !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 16px;
-}
-
-.container h1 {
-    font-weight: 500;
-    font-size: 3rem;
-    margin-bottom: 16px;
-}
-
 .description {
     display: flex;
 }
@@ -163,14 +147,6 @@
 }
 
 @media only screen and (max-width: 700px) {
-    .container {
-        width: 100% !important;
-    }
-
-    .container h1 {
-        font-size: 1.5rem;
-    }
-
     .description p {
         font-size: 0.8rem;
     }
