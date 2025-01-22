@@ -1,70 +1,23 @@
 <template>
   <div class="container">
-    <h1 class="primary-color-text">Experiências</h1>
+    <h1 class="primary-color-text">{{ $t('experiencias') }}</h1>
 
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Desenvolvedor de software - Pleno</h3>
-          <p>Defensoria Pública do Estado do Piauí · (mar de 2023 - momento)</p>
-          <p>Na Defensoria Pública do Estado do Piauí eu trabalho no setor de desenvolvimento, realizando principalmente
-            as seguintes rotinas:</p>
-          <li>Criação e manutenção de softwares;</li>
-          <li>Realização de testes unitários e de integração;</li>
-          <li>Configuração e gerenciamento das configurações dos servidores das aplicações. Na Defensoria Pública do
-            Estado do Piauí eu trabalho no setor de desenvolvimento, realizando principalmente as seguintes rotinas: -
-            Criação e manutenção de softwares; - Realização de testes unitários e de integração; - Configuração e
-            gerenciamento das configurações dos servidores das aplicações.</li>
+        <div class="timeline-content" v-html="$t('desenvolvedor_pleno')"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content" v-html="$t('desenvolvedor_junior')"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content" v-html="$t('desenvolvedor_temporario')">
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Desenvolvedor de software - Júnior</h3>
-          <p>Defensoria Pública do Estado do Piauí · (dez de 2021 - mar de 2023)</p>
-          <p>Na Defensoria Pública do Estado do Piauí eu trabalho no setor desenvolvimento realizando principalmente as
-            seguintes rotinas:</p>
-          <li>Criação e manutenção de softwares;</li>
-          <li>Realização de testes unitários e de integração;</li>
-          <li>Configuração e gerenciamento das configurações dos servidores das aplicações.</li>
-        </div>
+        <div class="timeline-content" v-html="$t('estagiario_ti')"></div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Desenvolvedor de software - temporário</h3>
-          <p>Defensoria Pública do Estado do Piauí · (out de 2021 - nov de 2021)</p>
-          <p>Na defensoria atuei de forma temporária do começo ao final do mês de Outubro de 2021, auxiliei no
-            desenvolvimento de sistemas internos utilizando a linguagem de programação Python.
-          </p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Estagiário de TI</h3>
-          <p>Grupo Vanguarda · Estágio · (abr de 2019 - mar de 2021)</p>
-          <p>No Grupo Vanguarda atuei como estagiário de Service Desk, abaixo a apresentação das atividades do meu dia a
-            dia:</p>
-          <ul>
-            <li>Recebimento de ordens de serviços por meio de um sistema próprio para isso, por meio de ligação
-              telefônica e e-mail;</li>
-            <li>Análise e solução das ordens de serviços;</li>
-            <li>Conexão remota por meio do VNC e TeamViwer;</li>
-            <li>Configuração remota de estações trabalho e PDVs.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Estagiário - ensino médio</h3>
-          <p>Med Imagem · Estágio · (mar de 2015 - dez de 2016)</p>
-          <p>No Grupo Medi Imagem atuei como estagiário nível médio no setor de autorização, Abaixo a apresentação das
-            principais atividades:</p>
-          <ul>
-            <li>Recolhimento e organização de prontuários médicos;</li>
-            <li>Recebimento das solicitações de procedimentos cirúrgicos ou medicamentos por parte dos médicos;</li>
-            <li>Comunicação com os convênios médicos vinculados para informar sobre as solicitações médicas;</li>
-            <li>Feedback constante com o grupo de enfermagem, tendo como principal informação a autorização de</li>
-          </ul>
-        </div>
+        <div class="timeline-content" v-html="$t('estagiario_ensino_medio')"></div>
       </div>
     </div>
   </div>
@@ -118,10 +71,10 @@
 }
 
 .timeline-content h3 {
-  margin: 0 0 5px;
-  font-size: 18px;
-  color: var(--primary-color);
-  font-weight: 500;
+  margin: 0 0 5px !important;
+  font-size: 18px !important;
+  color: var(--primary-color) !important;
+  font-weight: 500 !important;
 }
 
 .timeline-content p {

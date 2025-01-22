@@ -23,7 +23,7 @@ getRespositoryes();
   <main>
     <!-- <h1>Portfolio</h1> -->
 
-    <h2>Projetos Github</h2>
+    <h2>{{ $t('projetos_github') }}</h2>
     <hr class="divider">
 
     <div class="loading" v-if="loading">
