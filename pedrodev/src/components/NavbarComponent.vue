@@ -8,10 +8,10 @@ import { RouterLink } from 'vue-router'
             <h1 class="logo agbalumo">PedroCast</h1>
         </RouterLink>
         <nav>
-            <RouterLink class="nav-item" to="/">Inicio</RouterLink>
-            <RouterLink class="nav-item" to="/sobre">Sobre</RouterLink>
-            <RouterLink class="nav-item" to="/experiencias">Experiencias</RouterLink>
-            <RouterLink class="nav-item" to="/portfolio">Portfolio</RouterLink>
+            <RouterLink exactActiveClass="selecionado" class="nav-item" to="/">Inicio</RouterLink>
+            <RouterLink exactActiveClass="selecionado" class="nav-item" to="/sobre">Sobre</RouterLink>
+            <RouterLink exactActiveClass="selecionado" class="nav-item" to="/experiencias">Experiencias</RouterLink>
+            <RouterLink exactActiveClass="selecionado" class="nav-item" to="/portfolio">Portfolio</RouterLink>
         </nav>
     </header>
 </template>
@@ -37,6 +37,15 @@ header {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
+    transition: 300ms;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+}
+
+.selecionado {
+    color: var(--primary-color);
 }
 
 .remove-decoration {

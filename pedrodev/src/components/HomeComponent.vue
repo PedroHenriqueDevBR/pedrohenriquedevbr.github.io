@@ -31,15 +31,17 @@ function copyMail() {
 
     <div class="social-container">
         <div class="social-item">
-            <a target="_blank" href="https://github.com/PedroHenriqueDevBR/"><font-awesome-icon
-                    :icon="['fab', 'github']" /></a>
+            <a target="_blank" href="https://github.com/PedroHenriqueDevBR/">
+                <i class="fa-brands fa-github hover"></i>
+            </a>
         </div>
         <div class="social-item">
-            <a target="_blank" href="https://www.linkedin.com/in/pedro-henrique-br/"><font-awesome-icon
-                    :icon="['fab', 'linkedin']" /></a>
+            <a target="_blank" href="https://www.linkedin.com/in/pedro-henrique-br">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
         </div>
         <div class="social-item" @click="toggleShowMail">
-            <font-awesome-icon :icon="['far', 'envelope']" />
+            <i class="fa-solid fa-envelope hover"></i>
         </div>
     </div>
 
@@ -50,7 +52,6 @@ function copyMail() {
                 <font-awesome-icon :icon="['far', 'copy']" />
             </div>
             <p v-if="mailHasCopy">E-mail copiado</p>
-
         </div>
     </div>
 
@@ -133,7 +134,20 @@ main {
 
 .social-item {
     font-size: 1.8rem;
-    margin: 8px;
+    margin: 4px;
+}
+
+.hover,
+.fa-linkedin {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: 200ms;
+}
+
+.hover:hover,
+.fa-linkedin:hover {
+    background-color: var(--color-background-soft) !important;
 }
 
 .mail-container {
@@ -245,7 +259,7 @@ main {
 
     .social-item {
         font-size: 1.2rem;
-        margin: 8px;
+        margin: 4px;
     }
 }
 
@@ -311,7 +325,7 @@ main {
 
     .social-item {
         font-size: 1.5rem;
-        margin: 8px;
+        margin: 4px;
     }
 }
 </style>

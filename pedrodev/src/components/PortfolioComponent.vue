@@ -87,6 +87,11 @@ main h2 {
   margin: 16px;
   border-radius: 4px;
   cursor: pointer;
+  transition: 300ms;
+}
+
+.github-card:hover {
+  border: 2px solid var(--secondary-color);
 }
 
 .card-header {
