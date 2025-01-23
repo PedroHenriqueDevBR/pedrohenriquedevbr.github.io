@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import SwitchLanguageComponent from './SwitchLanguageComponent.vue';
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import { RouterLink } from 'vue-router'
             <RouterLink exactActiveClass="selecionado" class="nav-item" to="/portfolio">{{ $t('nav_portfolio') }}
             </RouterLink>
         </nav>
+        <SwitchLanguageComponent />
     </header>
 </template>
 
@@ -25,6 +27,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
 }

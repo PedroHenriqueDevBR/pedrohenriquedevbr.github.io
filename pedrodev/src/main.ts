@@ -11,7 +11,7 @@ import { createI18n } from 'vue-i18n';
 import pt from '@/locales/pt.json';
 import en from '@/locales/en.json';
 
-const in18 = createI18n({
+const i18n = createI18n({
     locale: "en",
     fallbackLocale: "en",
     messages: { pt, en }
@@ -28,6 +28,7 @@ app.component("font-awesome-icon", FontAwesomeIcon)
 
 app.use(createPinia())
 app.use(router)
-app.use(in18)
+app.use(i18n)
+app.provide('i18n', i18n)
 
 app.mount('#app')
