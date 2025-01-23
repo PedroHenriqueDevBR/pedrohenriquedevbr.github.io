@@ -20,8 +20,8 @@ function copyMail() {
 
     <main>
         <div class="description">
-            <h2>Oi, sou <span class="name">Pedro</span></h2>
-            <p>Desenvolvedor de software pleno <br> Python | VueJS | TypeScript | Docker | PostgreSQL | Linux</p>
+            <h2>{{ $t("oi") }} <span class="name">Pedro</span></h2>
+            <p>{{ $t("especialidade") }} <br> Python | VueJS | TypeScript | Docker | PostgreSQL | Linux</p>
         </div>
 
         <div class="image-container">
